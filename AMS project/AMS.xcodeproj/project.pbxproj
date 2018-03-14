@@ -91,11 +91,11 @@
 				165ED0EF2047C6C6005A2757 /* view */,
 				165ED0EE2047C69E005A2757 /* controller */,
 				1674673720443C380086C52E /* AppDelegate.swift */,
+				1671AA5E20491AEC00853CFE /* Expandable.swift */,
 				1674673B20443C380086C52E /* Main.storyboard */,
 				1674673E20443C380086C52E /* Assets.xcassets */,
 				1674674020443C380086C52E /* LaunchScreen.storyboard */,
 				1674674320443C380086C52E /* Info.plist */,
-				1671AA5E20491AEC00853CFE /* Expandable.swift */,
 			);
 			path = AMS;
 			sourceTree = "<group>";
