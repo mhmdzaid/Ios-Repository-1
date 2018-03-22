@@ -22,6 +22,7 @@
 		1685628B206404FA003A4C2B /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628A206404FA003A4C2B /* NotificationVC.swift */; };
 		1685628D2064051B003A4C2B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628C2064051B003A4C2B /* HomeVC.swift */; };
 		1685628F20640558003A4C2B /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628E20640558003A4C2B /* SideMenuVC.swift */; };
+		1685629120646D01003A4C2B /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685629020646D01003A4C2B /* OptionCell.swift */; };
 		16BCE6F2206327200046019E /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCE6F02063271D0046019E /* DLRadioButton.m */; };
 		E6D9A723BE21319AD87BB232 /* Pods_AMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6FACACB0A4C57EF1ACA48D /* Pods_AMS.framework */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		1685628A206404FA003A4C2B /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
 		1685628C2064051B003A4C2B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		1685628E20640558003A4C2B /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
+		1685629020646D01003A4C2B /* OptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		16BCE6EF206327140046019E /* AMS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMS-Bridging-Header.h"; sourceTree = "<group>"; };
 		16BCE6F02063271D0046019E /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		16BCE6F12063271E0046019E /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */,
 				1672A403205EF07E00995BBD /* studentCell.swift */,
+				1685629020646D01003A4C2B /* OptionCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 			files = (
 				165ED114204835BB005A2757 /* scheduleCellTableViewCell.swift in Sources */,
 				1674673A20443C380086C52E /* loginVC.swift in Sources */,
+				1685629120646D01003A4C2B /* OptionCell.swift in Sources */,
 				165ED0F22047C765005A2757 /* scheduleVC.swift in Sources */,
 				1672A404205EF07E00995BBD /* studentCell.swift in Sources */,
 				16BCE6F2206327200046019E /* DLRadioButton.m in Sources */,

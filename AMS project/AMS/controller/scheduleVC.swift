@@ -230,6 +230,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         button.setImage(minus, for: .normal)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
+        
         if subject[section].isExpanded{
             button.setImage(minus, for: .normal)
             button.imageView?.image = minus
