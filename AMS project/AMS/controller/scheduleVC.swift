@@ -10,7 +10,10 @@ import UIKit
 
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
-   
+    var i = 0
+   var questions = ["is there interaction in the lecture?","what is your satisfation of reply of misunderstanding questions?","does instructor have all lecture time? ","what about studying resources of this course?","what about instructor latency ?"]
+    var choices  = [String](repeating:"fuck", count: 5)
+    var choice = ""
     var subject = [
         
         ExpandableNames(isExpanded: true, subjects: ["subject":"computer vision","time" : "10:12 AM","type" : "section" ]),
@@ -19,13 +22,19 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         ExpandableNames(isExpanded: true, subjects:  ["subject":"operating system","time" : "2:00","type" : "lecture"]),
         ExpandableNames(isExpanded: true, subjects:  ["subject":"Network","time" : "2:00","type" : "lecture"]),
         ExpandableNames(isExpanded: true, subjects: ["subject":"Network","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects: ["subject":"algorithm","time" : "2:00","type" : "lecture"])
-                                                                                                                        ]
+        ExpandableNames(isExpanded: true, subjects: ["subject":"algorithm","time" : "2:00","type" : "lecture"])]
     
     let days  = ["  saturday","  sunday","  monday","  tuseday","  wednisday ","  thursday"]
     let minus =  UIImage(named: "Shape 1")
     let plus = UIImage(named: "pls")
     //outlets
+    @IBOutlet weak var feedbackView: UIView!
+    @IBOutlet weak var question: UITextView!
+    @IBOutlet weak var ok: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var thankingView: UIView!
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var passField: UITextField!
     @IBOutlet weak var profImageInfo: UIImageView!
     @IBOutlet weak var professorImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -36,25 +45,137 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var marks: UILabel!
     @IBOutlet weak var attendanceLocation: UILabel!
+    //iboutlets of step bar
     
-    //ibActions
-    
+    @IBOutlet weak var c0: UIImageView!
+    @IBOutlet weak var c1: UIImageView!
+    @IBOutlet weak var c2: UIImageView!
+    @IBOutlet weak var c3: UIImageView!
+    @IBOutlet weak var c4: UIImageView!
+
+
+    @IBAction func passwordOkpressed(_ sender: Any) {
+        passwordView.isHidden = true
+    }
+    @IBAction func DissmissBtn(_ sender: Any) {
+        thankingView.isHidden = true
+    }
     @IBAction func okPressed(_ sender: Any) {
         infoView.isHidden = true
        tableView.alpha = 1
         
     }
+    @IBAction func choiceSelected(_ sender: DLRadioButton) {
+       let tag = sender.tag
+        
+        switch tag {
+        case -1:
+            choice = "Very satisfied"
+            break
+        case -2 :
+            choice = "Satisfied"
+            break
+        case -3 :
+            choice = "Not bad"
+            break
+        case -4 :
+            choice = "Unsatisfied"
+            break
+        case -5 :
+            choice = "Very unsatisfied"
+            break
+        default:
+            print("wrong coding ")
+        }
+    }
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        if i>0
+        {
+            if i == 5
+            {
+                let circle =  feedbackView.viewWithTag(i-1)as? UIImageView
+                circle?.image = UIImage(named: "ccover")
+                i-=1
+                question.text = questions[i]
+            }
+            let circle =  feedbackView.viewWithTag(i)as? UIImageView
+            circle?.image = UIImage(named: "ccover")
+            i-=1
+            question.text = questions[i]
+            
+        }
+        
+    }
+    @IBAction func nextButtonPressed(_ sender: Any) {
+        print("------------------------\(choice)")
+        choices[i] = choice
+    
+        if i<5
+        {
+            
+            if i == 4
+            {
+            question.text = questions[i]
+            i+=1
+            if i == 5
+            {
+                thankingView.isHidden = false
+                feedbackView.isHidden = true
+            }
+            
+            print("---------------------\(choices)")
+            return
+            }
+            i+=1
+            question.text = questions[i]
+            let circle =  feedbackView.viewWithTag(i)as? UIImageView
+            circle?.image = UIImage(named: "circle")
+        }
+        if i == 5
+        {
+        thankingView.isHidden = false
+        feedbackView.isHidden = true
+        
+       
+        
+        }
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
-       tableView.delegate = self
+        tableView.delegate = self
         tableView.dataSource = self
+        self.layoutConfig()
+    
+    }
+
+    func layoutConfig()->(){
         infoView.isHidden = true
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true
         profImageInfo.backgroundColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
+        thankingView.isHidden = true
+        thankingView.layer.borderColor = UIColor.black.cgColor
+        thankingView.layer.borderWidth = 0.3
+        passwordView.layer.borderColor = UIColor.black.cgColor
+        passwordView.layer.borderWidth = 0.3
+        passwordView.isHidden = true
+        passField.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
+        passField.layer.borderWidth = 1
+        passField.layer.cornerRadius = 10
+        ok.layer.cornerRadius = 8
+        question.text = questions[i]
+        feedbackView.layer.borderWidth = 0.7
+        feedbackView.layer.borderColor = UIColor.black.cgColor
+        backBtn.layer.borderWidth = 1.3
+        backBtn.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
+        
     }
     
+   
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"cell" ) as? scheduleCellTableViewCell else{
             return UITableViewCell()
@@ -82,10 +203,11 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         infoView.isHidden = false
-     
+        thankingView.isHidden = true
         subjectInfo.text = subject[indexPath.row].subjects["subject"]
         startTime.text = subject[indexPath.row].subjects["time"]
          tableView.alpha = 0.4
+      
     }
     
     
@@ -124,7 +246,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         return 100    }
     
     @objc func expandCollapse(button:UIButton){
-        
+        thankingView.isHidden = true
         print(button.tag)
         let section = button.tag
         var indexPaths = [IndexPath]()
@@ -153,7 +275,14 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
  
     }
     
-   
+enum choice : String {
+    case verySatisfied = "very Satisfied"
+    case satisfied = "satisfied"
+    case notBad = "not bad"
+    case unsatisfied = "unsatisfied"
+    case veryUnsatisfied = "very unsatisfied"
+    
+}
     
     
   
