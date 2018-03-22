@@ -12,7 +12,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
     var i = 0
    var questions = ["is there interaction in the lecture?","what is your satisfation of reply of misunderstanding questions?","does instructor have all lecture time? ","what about studying resources of this course?","what about instructor latency ?"]
-    var choices  = [String](repeating:"fuck", count: 5)
+    var choices  = [String](repeating:"", count: 5)
     var choice = ""
     var subject = [
         
@@ -28,6 +28,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     let minus =  UIImage(named: "Shape 1")
     let plus = UIImage(named: "pls")
     //outlets
+    @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var feedbackView: UIView!
     @IBOutlet weak var question: UITextView!
     @IBOutlet weak var ok: UIButton!
@@ -148,7 +149,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         tableView.delegate = self
         tableView.dataSource = self
         self.layoutConfig()
-    
+        menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
     }
 
     func layoutConfig()->(){
@@ -161,7 +162,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         thankingView.layer.borderWidth = 0.3
         passwordView.layer.borderColor = UIColor.black.cgColor
         passwordView.layer.borderWidth = 0.3
-        passwordView.isHidden = true
+      //  passwordView.isHidden = true
         passField.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
         passField.layer.borderWidth = 1
         passField.layer.cornerRadius = 10

@@ -18,6 +18,10 @@
 		1674673D20443C380086C52E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1674673B20443C380086C52E /* Main.storyboard */; };
 		1674673F20443C380086C52E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1674673E20443C380086C52E /* Assets.xcassets */; };
 		1674674220443C380086C52E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1674674020443C380086C52E /* LaunchScreen.storyboard */; };
+		1685628920640104003A4C2B /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1685628820640103003A4C2B /* SWRevealViewController.m */; };
+		1685628B206404FA003A4C2B /* NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628A206404FA003A4C2B /* NotificationVC.swift */; };
+		1685628D2064051B003A4C2B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628C2064051B003A4C2B /* HomeVC.swift */; };
+		1685628F20640558003A4C2B /* SideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1685628E20640558003A4C2B /* SideMenuVC.swift */; };
 		16BCE6F2206327200046019E /* DLRadioButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCE6F02063271D0046019E /* DLRadioButton.m */; };
 		E6D9A723BE21319AD87BB232 /* Pods_AMS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F6FACACB0A4C57EF1ACA48D /* Pods_AMS.framework */; };
 /* End PBXBuildFile section */
@@ -36,6 +40,11 @@
 		1674673E20443C380086C52E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1674674120443C380086C52E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1674674320443C380086C52E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1685628720640100003A4C2B /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		1685628820640103003A4C2B /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		1685628A206404FA003A4C2B /* NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationVC.swift; sourceTree = "<group>"; };
+		1685628C2064051B003A4C2B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		1685628E20640558003A4C2B /* SideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuVC.swift; sourceTree = "<group>"; };
 		16BCE6EF206327140046019E /* AMS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AMS-Bridging-Header.h"; sourceTree = "<group>"; };
 		16BCE6F02063271D0046019E /* DLRadioButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLRadioButton.m; sourceTree = "<group>"; };
 		16BCE6F12063271E0046019E /* DLRadioButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLRadioButton.h; sourceTree = "<group>"; };
@@ -63,6 +72,9 @@
 				166C17B42046336300D05D40 /* StartVC.swift */,
 				165ED0F12047C765005A2757 /* scheduleVC.swift */,
 				1672A401205EEEF300995BBD /* ManualAttendanceVC.swift */,
+				1685628A206404FA003A4C2B /* NotificationVC.swift */,
+				1685628C2064051B003A4C2B /* HomeVC.swift */,
+				1685628E20640558003A4C2B /* SideMenuVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -87,6 +99,8 @@
 			isa = PBXGroup;
 			children = (
 				1674673620443C380086C52E /* AMS */,
+				1685628720640100003A4C2B /* SWRevealViewController.h */,
+				1685628820640103003A4C2B /* SWRevealViewController.m */,
 				16BCE6F12063271E0046019E /* DLRadioButton.h */,
 				16BCE6F02063271D0046019E /* DLRadioButton.m */,
 				1674673520443C380086C52E /* Products */,
@@ -274,8 +288,12 @@
 				16BCE6F2206327200046019E /* DLRadioButton.m in Sources */,
 				1672A402205EEEF300995BBD /* ManualAttendanceVC.swift in Sources */,
 				1674673820443C380086C52E /* AppDelegate.swift in Sources */,
+				1685628F20640558003A4C2B /* SideMenuVC.swift in Sources */,
+				1685628920640104003A4C2B /* SWRevealViewController.m in Sources */,
 				166C17B52046336300D05D40 /* StartVC.swift in Sources */,
+				1685628D2064051B003A4C2B /* HomeVC.swift in Sources */,
 				1671AA5F20491AEC00853CFE /* Expandable.swift in Sources */,
+				1685628B206404FA003A4C2B /* NotificationVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
