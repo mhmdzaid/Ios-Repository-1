@@ -12,11 +12,7 @@ class StudentCell : UITableViewCell {
     
     
     @IBOutlet weak var studentName: UILabel!
-    @IBOutlet weak var checkImg: UIImageView!
-    @IBAction func pauseBtn(_ sender: Any) {
-        checkImg.image = UIImage()
-    }
-    @IBAction func startBtn(_ sender: Any) {
-        checkImg.image = UIImage(named: "pls")
-    }
+    
+    @IBOutlet weak var studentSwitch: UISwitch!
+    @IBOutlet weak var studentImage: UIImageView!
 }

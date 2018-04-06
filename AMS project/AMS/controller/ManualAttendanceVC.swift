@@ -14,9 +14,14 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        searchBar.layer.borderWidth  =  1.5
+        searchBar.layer.borderColor = UIColor.black.cgColor
+        searchBar.layer.cornerRadius = 13
+        searchBar.clipsToBounds = true
+        
     }
-
+    @IBOutlet weak var searchBar: UITextField!
+    
 
     @IBOutlet weak var tableView: UITableView!
 
@@ -31,6 +36,9 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
             return UITableViewCell()
         }
      cell.studentName.text = "ahmed"
+     cell.studentImage.layer.cornerRadius = 39
+     cell.studentImage.clipsToBounds = true
+
     return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
