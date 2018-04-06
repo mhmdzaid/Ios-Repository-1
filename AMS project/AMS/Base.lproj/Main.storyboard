@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4o5-Wz-1qH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tq1-Yt-DOe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -861,25 +861,25 @@ Thanks you .
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zNM-hi-tmV">
-                                        <rect key="frame" x="271" y="33" width="44" height="39"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="search" translatesAutoresizingMaskIntoConstraints="NO" id="zNM-hi-tmV">
+                                        <rect key="frame" x="284" y="42" width="27" height="26"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="39" id="4zU-PF-WDe"/>
-                                            <constraint firstAttribute="width" constant="44" id="ldo-Yo-sqt"/>
+                                            <constraint firstAttribute="height" constant="26" id="4zU-PF-WDe"/>
+                                            <constraint firstAttribute="width" constant="27" id="ldo-Yo-sqt"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="zNM-hi-tmV" secondAttribute="bottom" constant="32" id="3Hv-VY-Wee"/>
+                                    <constraint firstAttribute="bottom" secondItem="zNM-hi-tmV" secondAttribute="bottom" constant="36" id="3Hv-VY-Wee"/>
                                     <constraint firstItem="sxa-z4-Dpw" firstAttribute="top" secondItem="QgB-8G-KkV" secondAttribute="top" constant="33" id="4BU-us-r41"/>
                                     <constraint firstAttribute="bottom" secondItem="sxa-z4-Dpw" secondAttribute="bottom" constant="32" id="5eI-oz-cmW"/>
                                     <constraint firstAttribute="height" constant="104" id="ATy-Na-Q7X"/>
                                     <constraint firstAttribute="trailing" secondItem="sxa-z4-Dpw" secondAttribute="trailing" constant="34" id="XLt-37-sTM"/>
                                     <constraint firstItem="sxa-z4-Dpw" firstAttribute="leading" secondItem="QgB-8G-KkV" secondAttribute="leading" constant="33" id="sdA-CW-ay0"/>
-                                    <constraint firstItem="zNM-hi-tmV" firstAttribute="top" secondItem="QgB-8G-KkV" secondAttribute="top" constant="33" id="tw7-JZ-Qhs"/>
-                                    <constraint firstItem="zNM-hi-tmV" firstAttribute="leading" secondItem="sxa-z4-Dpw" secondAttribute="trailing" constant="-70" id="zKH-f2-TWI"/>
+                                    <constraint firstItem="zNM-hi-tmV" firstAttribute="top" secondItem="QgB-8G-KkV" secondAttribute="top" constant="42" id="tw7-JZ-Qhs"/>
+                                    <constraint firstItem="zNM-hi-tmV" firstAttribute="leading" secondItem="sxa-z4-Dpw" secondAttribute="trailing" constant="-57" id="zKH-f2-TWI"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kmm-p9-cFi">
@@ -1014,17 +1014,18 @@ Thanks you .
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sE-to-bJ4">
-                                                    <rect key="frame" x="138" y="15" width="125" height="35"/>
+                                                    <rect key="frame" x="138" y="15" width="195" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="125" id="axk-5e-Jvy"/>
+                                                        <constraint firstAttribute="width" constant="195" id="axk-5e-Jvy"/>
                                                         <constraint firstAttribute="height" constant="35" id="svs-C5-pUa"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gXN-Ej-ksS">
                                                     <rect key="frame" x="54" y="7" width="51" height="51"/>
+                                                    <color key="tintColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="51" id="KBn-kN-ZdF"/>
                                                         <constraint firstAttribute="height" constant="51" id="Zb7-uV-daf"/>
@@ -1034,7 +1035,7 @@ Thanks you .
                                             <constraints>
                                                 <constraint firstItem="7sE-to-bJ4" firstAttribute="centerY" secondItem="gv7-hV-ri8" secondAttribute="centerY" id="0lE-gJ-UDg"/>
                                                 <constraint firstItem="7sE-to-bJ4" firstAttribute="centerY" secondItem="gXN-Ej-ksS" secondAttribute="centerY" id="1CK-gh-GXa"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="7sE-to-bJ4" secondAttribute="trailing" constant="97" id="gbg-cV-0GK"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="7sE-to-bJ4" secondAttribute="trailing" constant="27" id="gbg-cV-0GK"/>
                                                 <constraint firstItem="7sE-to-bJ4" firstAttribute="leading" secondItem="gXN-Ej-ksS" secondAttribute="trailing" constant="33" id="n2K-YS-7jn"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1323,6 +1324,7 @@ Thanks you .
         <image name="marks" width="70" height="70"/>
         <image name="password" width="60" height="60"/>
         <image name="scheduleTabbar" width="37" height="40"/>
+        <image name="search" width="40" height="40"/>
         <image name="smackBurger" width="40" height="40"/>
         <image name="start time" width="70" height="70"/>
         <image name="student" width="57" height="74"/>
