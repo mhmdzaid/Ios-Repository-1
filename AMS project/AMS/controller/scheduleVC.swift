@@ -46,6 +46,12 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var marks: UILabel!
     @IBOutlet weak var attendanceLocation: UILabel!
+    //instructor View outlets
+    @IBOutlet weak var instructorView: UIView!
+    @IBOutlet weak var subjectName: UILabel!
+    @IBOutlet weak var startedAt: UILabel!
+    @IBOutlet weak var timeLeft: UILabel!
+    @IBOutlet weak var studentNumber: UILabel!
     //iboutlets of step bar
     
     @IBOutlet weak var c0: UIImageView!
