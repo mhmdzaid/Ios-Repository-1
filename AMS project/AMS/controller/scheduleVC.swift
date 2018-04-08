@@ -13,6 +13,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     var i = 0
    var questions = ["is there interaction in the lecture?","what is your satisfation of reply of misunderstanding questions?","does instructor have all lecture time? ","what about studying resources of this course?","what about instructor latency ?"]
     var choices  = [String](repeating:"", count: 5)
+    var sideMenuVisible = false
     var choice = ""
     var subject = [
         
@@ -52,6 +53,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var startedAt: UILabel!
     @IBOutlet weak var timeLeft: UILabel!
     @IBOutlet weak var studentNumber: UILabel!
+    @IBOutlet weak var manualAttBtn: UIButton!
+    @IBOutlet weak var endSessionBtn: UIButton!
     //iboutlets of step bar
     
     @IBOutlet weak var c0: UIImageView!
@@ -71,6 +74,16 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         infoView.isHidden = true
        tableView.alpha = 1
         
+    }
+    @IBAction func menuBtnSelected(_ sender: Any) {
+        if sideMenuVisible == true{
+            sideMenuVisible = false
+            self.view.alpha = 1
+        }
+        else{
+            sideMenuVisible = true
+            self.view.alpha = 0.6
+        }
     }
     @IBAction func choiceSelected(_ sender: DLRadioButton) {
        let tag = sender.tag
@@ -178,7 +191,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         feedbackView.layer.borderColor = UIColor.black.cgColor
         backBtn.layer.borderWidth = 1.3
         backBtn.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
-        
+        manualAttBtn.layer.cornerRadius = 20
+        endSessionBtn.layer.cornerRadius = 20
     }
     
    

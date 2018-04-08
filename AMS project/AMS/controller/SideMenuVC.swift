@@ -15,9 +15,10 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     //Iboutlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 80
+        self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
             profileImage.layer.cornerRadius = 70
             profileImage.clipsToBounds = true
             profileImage.layer.borderWidth = 3
@@ -34,7 +35,7 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 67    }
+        return self.view.frame.height/9.8}
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "options")as?OptionCell else{

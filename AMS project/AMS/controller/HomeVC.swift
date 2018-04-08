@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeVC: UIViewController {
-
+var sideMenuVisible = false
     @IBOutlet weak var menuBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,5 +17,15 @@ class HomeVC: UIViewController {
 
     }
 
-
+    @IBAction func menuBtnSelected(_ sender: Any) {
+        if sideMenuVisible == true{
+            sideMenuVisible = false
+            self.view.alpha = 1
+        }
+        else{
+            sideMenuVisible = true
+            self.view.alpha = 0.6
+        }
+    }
+    
 }

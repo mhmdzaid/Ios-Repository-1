@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "tabbarSchedule.png",
+      "filename" : "login.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "tabbarSchedule.png",
       "scale" : "2x"
     },
     {
