@@ -193,6 +193,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         backBtn.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
         manualAttBtn.layer.cornerRadius = 20
         endSessionBtn.layer.cornerRadius = 20
+        instructorView.isHidden = true
     }
     
    
