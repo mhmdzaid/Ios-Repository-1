@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class loginVC: UIViewController {
   
     @IBOutlet weak var logo: UIImageView!
@@ -23,7 +22,6 @@ class loginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
         logo.layer.cornerRadius = 90
         logo.clipsToBounds = true
         logo.layer.borderColor = UIColor.white.cgColor

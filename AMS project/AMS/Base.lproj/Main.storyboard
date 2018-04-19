@@ -20,16 +20,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="ymQ-29-GZh">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Nm9-Oa-Nyj">
-                                <rect key="frame" x="35.5" y="41" width="304" height="507"/>
+                                <rect key="frame" x="35.5" y="41" width="249" height="507"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ae-E1-cK6">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="219"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FcU-vK-WbY">
-                                                <rect key="frame" x="56" y="17" width="185" height="185"/>
+                                                <rect key="frame" x="30" y="17" width="185" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.31929716706243227" green="0.54832356361810719" blue="0.60032898187637329" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -37,7 +37,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pk9-GH-IDm">
-                                        <rect key="frame" x="0.0" y="249" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="249" width="249" height="66"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="y4r-bo-H4V"/>
@@ -47,7 +47,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5KR-av-Jwe">
-                                        <rect key="frame" x="0.0" y="345" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="345" width="249" height="66"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="ugy-Oq-rW6"/>
@@ -57,7 +57,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDw-GC-14z">
-                                        <rect key="frame" x="0.0" y="441" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="441" width="249" height="66"/>
                                         <color key="backgroundColor" red="0.071214467884415988" green="0.59066022120987827" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="O1e-Lg-cTz"/>
@@ -1344,16 +1344,16 @@ Thanks you .
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="JKk-IL-hey">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="epy-JV-JHr">
-                                <rect key="frame" x="35.5" y="41" width="304" height="507"/>
+                                <rect key="frame" x="35.5" y="41" width="249" height="507"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlh-CF-Poz">
-                                        <rect key="frame" x="0.0" y="0.0" width="304" height="219"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="59" y="13" width="185" height="185"/>
+                                                <rect key="frame" x="31" y="13" width="185" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1361,7 +1361,7 @@ Thanks you .
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mg-3V-l3Y">
-                                        <rect key="frame" x="0.0" y="249" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="249" width="249" height="66"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="92p-eX-hrO"/>
@@ -1373,7 +1373,7 @@ Thanks you .
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJs-9M-BC4">
-                                        <rect key="frame" x="0.0" y="345" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="345" width="249" height="66"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="9DS-Xz-HNX"/>
@@ -1385,7 +1385,7 @@ Thanks you .
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="right" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-6v-OZ9">
-                                        <rect key="frame" x="0.0" y="441" width="304" height="66"/>
+                                        <rect key="frame" x="0.0" y="441" width="249" height="66"/>
                                         <color key="backgroundColor" red="0.071214467880000007" green="0.59066022119999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="53Z-6J-QAU"/>
@@ -1455,8 +1455,8 @@ Thanks you .
         <image name="att" width="32" height="32"/>
         <image name="attendance place" width="70" height="70"/>
         <image name="bg" width="403" height="218"/>
-        <image name="ccover" width="1000" height="1000"/>
-        <image name="circle" width="587" height="543"/>
+        <image name="ccover" width="32" height="32"/>
+        <image name="circle" width="32" height="32"/>
         <image name="eye" width="64" height="64"/>
         <image name="gradient" width="750" height="1334"/>
         <image name="instructor" width="50" height="80"/>
