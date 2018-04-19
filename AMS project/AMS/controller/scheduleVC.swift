@@ -34,6 +34,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var question: UITextView!
     @IBOutlet weak var ok: UIButton!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
     @IBOutlet weak var thankingView: UIView!
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var passField: UITextField!
@@ -106,6 +107,13 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             break
         default:
             print("wrong coding ")
+        }
+    }
+    @IBAction func showHidePassword(_ sender: Any) {
+        if passField.isSecureTextEntry == true {
+            passField.isSecureTextEntry = false
+        }else{
+            passField.isSecureTextEntry = true
         }
     }
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -191,6 +199,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         feedbackView.layer.borderColor = UIColor.black.cgColor
         backBtn.layer.borderWidth = 1.3
         backBtn.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
+        backBtn.layer.cornerRadius = 20
+        nextBtn.layer.cornerRadius = 20
         manualAttBtn.layer.cornerRadius = 20
         endSessionBtn.layer.cornerRadius = 20
        //++++++ instructorView.isHidden = true
