@@ -7,11 +7,12 @@
 //
 
 import UIKit
-
+import SwiftyJSON
+import Alamofire
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
     var i = 0
-   var questions = ["is there interaction in the lecture?","what is your satisfation of reply of misunderstanding questions?","does instructor have all lecture time? ","what about studying resources of this course?","what about instructor latency ?"]
+    var questions : [JSON]!
     var choices  = [String](repeating:"", count: 5)
     var sideMenuVisible = false
     var choice = ""
@@ -86,25 +87,41 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             self.view.alpha = 0.6
         }
     }
+    
+    func fetchQuestions(){
+        
+        Alamofire.request("http://syntax-eg.esy.es/api/questionsByAdmin").responseJSON{ (Response) in
+             print(Response)
+            if let response = Response.result.value{
+           
+            let qust = JSON(response)
+            self.questions =  qust["all_Admin_Questions"].arrayValue
+            
+            }else{
+                print("connection failed ")
+            }
+        }
+        
+    }
     @IBAction func choiceSelected(_ sender: DLRadioButton) {
        let tag = sender.tag
         
         switch tag {
         case -1:
-            choice = "Very satisfied"
+            choice = questions[1]["option1"].stringValue
             break
         case -2 :
-            choice = "Satisfied"
+            choice = questions[1]["option2"].stringValue
             break
         case -3 :
-            choice = "Not bad"
+            choice = questions[1]["option3"].stringValue
             break
         case -4 :
-            choice = "Unsatisfied"
+            choice = questions[1]["option4"].stringValue
             break
-        case -5 :
-            choice = "Very unsatisfied"
-            break
+      //  case -5 :
+        //    choice = questions[i]["option5"].stringValue
+        //    break
         default:
             print("wrong coding ")
         }
@@ -125,12 +142,12 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                 let circle =  feedbackView.viewWithTag(i-1)as? UIImageView
                 circle?.image = UIImage(named: "ccover")
                 i-=1
-                question.text = questions[i]
+                question.text = questions[i]["question"].stringValue
             }
             let circle =  feedbackView.viewWithTag(i)as? UIImageView
             circle?.image = UIImage(named: "ccover")
             i-=1
-            question.text = questions[i]
+            question.text =  questions[i]["question"].stringValue
             
         }
         
@@ -144,7 +161,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             
             if i == 4
             {
-            question.text = questions[i]
+            question.text = questions[i]["question"].stringValue
             i+=1
             if i == 5
             {
@@ -156,7 +173,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             return
             }
             i+=1
-            question.text = questions[i]
+            question.text = questions[i]["question"].stringValue
             let circle =  feedbackView.viewWithTag(i)as? UIImageView
             circle?.image = UIImage(named: "circle")
         }
@@ -175,6 +192,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         self.view.backgroundColor = UIColor.black
         tableView.delegate = self
         tableView.dataSource = self
+        self.fetchQuestions()
         self.layoutConfig()
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
     }
@@ -194,7 +212,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         passField.layer.borderWidth = 1
         passField.layer.cornerRadius = 10
         ok.layer.cornerRadius = 8
-        question.text = questions[i]
+        print(questions)
+        question.text = questions[i]["question"].stringValue
         feedbackView.layer.borderWidth = 0.7
         feedbackView.layer.borderColor = UIColor.black.cgColor
         backBtn.layer.borderWidth = 1.3

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AMS/controller/scheduleVC.swift"
-            timestampString = "545835006.393283"
+            timestampString = "545953583.819085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
             landmarkName = "expandCollapse(button:)"
             landmarkType = "7">
          </BreakpointContent>
