@@ -12,6 +12,7 @@ import Alamofire
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
     var i = 0
+    var studentID : Int64! = 8
     var questions = [JSON](repeating:"", count: 5){
         didSet{
             option1.setTitle(questions[0]["option1"].stringValue, for: .normal)
@@ -20,7 +21,22 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             option4.setTitle(questions[0]["option4"].stringValue, for: .normal)
         }
     }
-    var choices  = [String](repeating:"", count: 5)
+    var questionsToPost : [String : Any] = [:]
+    var choices  = [String](repeating:"", count: 5){
+        didSet{
+            
+            questionsToPost = ["student_id": studentID]
+            for (index,choice) in choices.enumerated()
+            {
+                questionsToPost["answer\(index+1)"] = choice
+            }
+            print("question to post ==============>: \(questionsToPost)")
+          let url = "http://syntax-eg.esy.es/api/questionsByStudtents"
+            Alamofire.request(url, method: .post, parameters: questionsToPost, encoding: JSONEncoding.default, headers: nil).responseJSON{ (response) in
+                
+            }
+        }
+    }
     var sideMenuVisible = false
     var choice = ""
     var subject = [
