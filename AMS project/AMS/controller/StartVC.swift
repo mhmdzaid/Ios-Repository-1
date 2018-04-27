@@ -7,8 +7,19 @@ class StartVC: UIViewController {
     @IBOutlet weak var CreateAccountBtn: UIButton!
    
     @IBAction func loginAsProf(_ sender: Any) {
+     
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! loginVC
+        if segue.identifier == "loginAsProfessor"{
+           
+            destinationVC.loginType = .instructor
+        }
+        else{
+           destinationVC.loginType = .student
+        }
+    }
     //actions
     @IBAction func loginAsStudent(_ sender: Any) {
     }

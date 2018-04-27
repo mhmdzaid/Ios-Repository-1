@@ -12,7 +12,8 @@ import SwiftyJSON
 class loginVC: UIViewController {
   
    
-    var loginType : loginType = .instructor
+    var loginType : loginType = .student
+    
     
     
     @IBOutlet weak var logo: UIImageView!
@@ -23,7 +24,7 @@ class loginVC: UIViewController {
     
    
     @IBAction func loginPressed(_ sender: Any) {
-        if loginType == .instructor
+        if loginType == .student
         {
             Alamofire.request("http://syntax-eg.esy.es/api/students").responseJSON { (Response) in
             if  let response = Response.result.value{
@@ -119,7 +120,7 @@ class loginVC: UIViewController {
         logo.layer.borderWidth = 2.3
         loginBtn.layer.cornerRadius = 32
         loginBtn.clipsToBounds = true
-        
+        print(self.loginType)
     }
 
 }

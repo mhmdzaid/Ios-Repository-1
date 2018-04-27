@@ -56,19 +56,26 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDw-GC-14z">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bDw-GC-14z">
                                         <rect key="frame" x="0.0" y="441" width="249" height="66"/>
                                         <color key="backgroundColor" red="0.071214467884415988" green="0.59066022120987827" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="O1e-Lg-cTz"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <inset key="contentEdgeInsets" minX="-1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="titleEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <inset key="imageEdgeInsets" minX="160" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="170" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <size key="titleShadowOffset" width="7" height="20"/>
-                                        <state key="normal" title="   Login     " image="login">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" image="login">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="   Login     ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" metaFont="system" size="21"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="loginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ipv-1L-sUN"/>
@@ -76,7 +83,6 @@
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="249" id="FBd-dS-pWu"/>
                                     <constraint firstAttribute="height" constant="507" id="Sg6-Fz-9Dg"/>
                                 </constraints>
                             </stackView>
@@ -625,70 +631,56 @@ Thanks you .
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-hd-6vu" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-hd-6vu" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="222" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="UTQ-Q0-4KD"/>
                                             <constraint firstAttribute="width" constant="160" id="ugQ-P1-5Up"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Satisfied">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="MAM-nF-q4F"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="-3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bP-uX-Z80" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bP-uX-Z80" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="257" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="ZNh-uq-eSa"/>
                                             <constraint firstAttribute="width" constant="160" id="Znb-9l-oiS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Not bad">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="Jp2-fT-qLL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="-4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PF-nN-bSE" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PF-nN-bSE" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="292" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="MZT-Zu-ON1"/>
                                             <constraint firstAttribute="height" constant="35" id="SRt-7O-HAO"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Unsatisfied">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="MFd-TE-5wS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="-5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQ0-TM-pd9" customClass="DLRadioButton">
-                                        <rect key="frame" x="39" y="325" width="160" height="35"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="OMP-nS-ltS"/>
-                                            <constraint firstAttribute="width" constant="160" id="rAi-tQ-C4y"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Very unsatisfied">
-                                            <color key="titleColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="gKZ-sY-x4X"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1j-2g-Fyc" customClass="DLRadioButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1j-2g-Fyc" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="189" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="EJ8-z4-pwn"/>
                                             <constraint firstAttribute="width" constant="160" id="GZy-cu-VE0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <state key="normal" title="Very satisfied">
+                                        <state key="normal">
                                             <color key="titleColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -696,7 +688,6 @@ Thanks you .
                                             <outletCollection property="otherButtons" destination="fTt-hd-6vu" id="Yue-qq-2z9"/>
                                             <outletCollection property="otherButtons" destination="3bP-uX-Z80" id="Deu-cU-p1E"/>
                                             <outletCollection property="otherButtons" destination="0PF-nN-bSE" id="vpY-pf-u7K"/>
-                                            <outletCollection property="otherButtons" destination="EQ0-TM-pd9" id="qt1-du-x9J"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rA9-Fs-yng">
@@ -795,19 +786,17 @@ Thanks you .
                                     <constraint firstItem="5ea-cb-SsW" firstAttribute="centerX" secondItem="AGl-Nm-5aj" secondAttribute="centerX" id="ZZ1-dp-wC6"/>
                                     <constraint firstItem="bo5-u1-WtZ" firstAttribute="leading" secondItem="AGl-Nm-5aj" secondAttribute="leading" constant="15" id="bI6-hs-egf"/>
                                     <constraint firstItem="fTt-hd-6vu" firstAttribute="top" secondItem="Q1j-2g-Fyc" secondAttribute="bottom" constant="-2" id="dWA-Y7-fPc"/>
+                                    <constraint firstItem="5ea-cb-SsW" firstAttribute="top" secondItem="0PF-nN-bSE" secondAttribute="bottom" constant="63" id="eSg-ik-o8q"/>
                                     <constraint firstItem="taR-U6-tOu" firstAttribute="leading" secondItem="bo5-u1-WtZ" secondAttribute="trailing" constant="6" id="ep6-Tv-Mwn"/>
                                     <constraint firstItem="Q1j-2g-Fyc" firstAttribute="leading" secondItem="AGl-Nm-5aj" secondAttribute="leading" constant="40" id="fbg-iL-Pch"/>
                                     <constraint firstItem="Nds-MA-Fen" firstAttribute="centerY" secondItem="rA9-Fs-yng" secondAttribute="centerY" id="ggT-HQ-XJv"/>
                                     <constraint firstAttribute="trailing" secondItem="taR-U6-tOu" secondAttribute="trailing" constant="22" id="h7F-wC-59H"/>
                                     <constraint firstItem="0PF-nN-bSE" firstAttribute="leading" secondItem="AGl-Nm-5aj" secondAttribute="leading" constant="40" id="kK5-Sc-6ag"/>
-                                    <constraint firstItem="EQ0-TM-pd9" firstAttribute="top" secondItem="0PF-nN-bSE" secondAttribute="bottom" constant="-2" id="kgs-hi-Qob"/>
                                     <constraint firstItem="rA9-Fs-yng" firstAttribute="top" secondItem="AGl-Nm-5aj" secondAttribute="top" constant="22" id="lDB-uS-Brg"/>
                                     <constraint firstItem="rA9-Fs-yng" firstAttribute="centerX" secondItem="AGl-Nm-5aj" secondAttribute="centerX" id="lTs-cv-p48"/>
-                                    <constraint firstItem="EQ0-TM-pd9" firstAttribute="leading" secondItem="AGl-Nm-5aj" secondAttribute="leading" constant="39" id="n5c-9W-kZY"/>
                                     <constraint firstItem="Nds-MA-Fen" firstAttribute="top" secondItem="AGl-Nm-5aj" secondAttribute="top" constant="31" id="pb9-Kq-p7I"/>
                                     <constraint firstItem="taR-U6-tOu" firstAttribute="top" secondItem="Nds-MA-Fen" secondAttribute="bottom" constant="40" id="qMg-q0-jHs"/>
                                     <constraint firstItem="3bP-uX-Z80" firstAttribute="top" secondItem="fTt-hd-6vu" secondAttribute="bottom" id="t2i-Hk-PLK"/>
-                                    <constraint firstItem="5ea-cb-SsW" firstAttribute="top" secondItem="EQ0-TM-pd9" secondAttribute="bottom" constant="30" id="yFJ-gf-9P9"/>
                                     <constraint firstItem="rA9-Fs-yng" firstAttribute="leading" secondItem="Nds-MA-Fen" secondAttribute="leading" id="z3E-Ii-IgX"/>
                                 </constraints>
                             </view>
@@ -924,6 +913,10 @@ Thanks you .
                         <outlet property="menuBtn" destination="CgV-wu-Y8V" id="fFs-Gz-Hm0"/>
                         <outlet property="nextBtn" destination="iq8-5P-TEY" id="pi9-4d-98k"/>
                         <outlet property="ok" destination="CBm-qu-Qrx" id="YSc-g1-ZdE"/>
+                        <outlet property="option1" destination="Q1j-2g-Fyc" id="LYW-xH-0wS"/>
+                        <outlet property="option2" destination="fTt-hd-6vu" id="C7d-bT-g3N"/>
+                        <outlet property="option3" destination="3bP-uX-Z80" id="WZh-fw-Xt8"/>
+                        <outlet property="option4" destination="0PF-nN-bSE" id="fD9-JR-mtA"/>
                         <outlet property="passField" destination="Kgh-Kk-fuQ" id="nac-oB-HVG"/>
                         <outlet property="passwordView" destination="AB2-rQ-OLY" id="SKG-AC-BRv"/>
                         <outlet property="profImageInfo" destination="Yh1-MC-4p0" id="zzb-gH-K98"/>
@@ -1366,7 +1359,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="31" y="13" width="185" height="185"/>
+                                                <rect key="frame" x="31" y="13" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1383,6 +1376,7 @@ Thanks you .
                                         <state key="normal" title="  Login as Professor"/>
                                         <connections>
                                             <action selector="loginAsProf:" destination="xrl-Qf-eEM" eventType="touchUpInside" id="qSv-Cc-1nf"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="loginAsProfessor" id="8vV-kK-3oy"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tJs-9M-BC4">
@@ -1395,19 +1389,27 @@ Thanks you .
                                         <state key="normal" title="Login as Student"/>
                                         <connections>
                                             <action selector="loginAsStudent:" destination="xrl-Qf-eEM" eventType="touchUpInside" id="70E-gW-z0F"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="loginAsStudent" id="zhu-RU-4jb"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="right" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-6v-OZ9">
+                                    <button opaque="NO" contentMode="center" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAv-6v-OZ9">
                                         <rect key="frame" x="0.0" y="441" width="249" height="66"/>
                                         <color key="backgroundColor" red="0.071214467880000007" green="0.59066022119999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="66" id="53Z-6J-QAU"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                        <inset key="imageEdgeInsets" minX="250" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <size key="titleShadowOffset" width="-9" height="0.0"/>
-                                        <state key="normal" title=" Create New Account" image="add">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="215" minY="20" maxX="10" maxY="20"/>
+                                        <state key="normal" image="add">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content=" Create New Account">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="17" name=".SFNSDisplay"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="CreateAccountPressed:" destination="xrl-Qf-eEM" eventType="touchUpInside" id="QC7-Kp-XdJ"/>
@@ -1438,14 +1440,14 @@ Thanks you .
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="JKk-IL-hey" firstAttribute="leading" secondItem="6hz-QI-kMv" secondAttribute="leading" id="0uH-cd-dRn"/>
-                            <constraint firstItem="JKk-IL-hey" firstAttribute="top" secondItem="t0g-x8-5ZY" secondAttribute="top" id="IyJ-Bu-2BT"/>
+                            <constraint firstItem="JKk-IL-hey" firstAttribute="top" secondItem="t0g-x8-5ZY" secondAttribute="top" id="7nZ-Wb-7EB"/>
                             <constraint firstItem="8mg-3V-l3Y" firstAttribute="leading" secondItem="EkM-Ex-TSp" secondAttribute="trailing" constant="-48.5" id="J00-zT-drf"/>
                             <constraint firstItem="tJs-9M-BC4" firstAttribute="leading" secondItem="kHY-Cg-aIw" secondAttribute="trailing" constant="-48.5" id="Kjz-sk-dyz"/>
                             <constraint firstItem="6hz-QI-kMv" firstAttribute="trailing" secondItem="epy-JV-JHr" secondAttribute="trailing" constant="35.5" id="LrW-Xh-EQ5"/>
-                            <constraint firstItem="JKk-IL-hey" firstAttribute="trailing" secondItem="6hz-QI-kMv" secondAttribute="trailing" id="Sw2-nP-sh3"/>
+                            <constraint firstItem="JKk-IL-hey" firstAttribute="bottom" secondItem="6hz-QI-kMv" secondAttribute="bottom" id="O8e-0m-ToZ"/>
+                            <constraint firstItem="JKk-IL-hey" firstAttribute="trailing" secondItem="6hz-QI-kMv" secondAttribute="trailing" id="RLt-Fr-2eH"/>
+                            <constraint firstItem="JKk-IL-hey" firstAttribute="leading" secondItem="6hz-QI-kMv" secondAttribute="leading" id="W6y-Yv-Jze"/>
                             <constraint firstItem="kHY-Cg-aIw" firstAttribute="top" secondItem="tJs-9M-BC4" secondAttribute="bottom" constant="-52" id="YIg-xX-1SV"/>
-                            <constraint firstItem="JKk-IL-hey" firstAttribute="bottom" secondItem="6hz-QI-kMv" secondAttribute="bottom" id="byJ-hh-y52"/>
                             <constraint firstItem="epy-JV-JHr" firstAttribute="centerX" secondItem="t0g-x8-5ZY" secondAttribute="centerX" id="hCh-yW-PXE"/>
                             <constraint firstItem="EkM-Ex-TSp" firstAttribute="top" secondItem="8mg-3V-l3Y" secondAttribute="bottom" constant="-49" id="ioX-OB-bTp"/>
                             <constraint firstItem="epy-JV-JHr" firstAttribute="leading" secondItem="6hz-QI-kMv" secondAttribute="leading" constant="35.5" id="q34-0F-3fr"/>
@@ -1487,4 +1489,7 @@ Thanks you .
         <image name="username" width="60" height="60"/>
         <image name="whiteStudent" width="64" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8vV-kK-3oy"/>
+    </inferredMetricsTieBreakers>
 </document>

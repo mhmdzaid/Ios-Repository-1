@@ -12,7 +12,14 @@ import Alamofire
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
     var i = 0
-    var questions : [JSON]!
+    var questions = [JSON](repeating:"", count: 5){
+        didSet{
+            option1.setTitle(questions[0]["option1"].stringValue, for: .normal)
+            option2.setTitle(questions[0]["option2"].stringValue, for: .normal)
+            option3.setTitle(questions[0]["option3"].stringValue, for: .normal)
+            option4.setTitle(questions[0]["option4"].stringValue, for: .normal)
+        }
+    }
     var choices  = [String](repeating:"", count: 5)
     var sideMenuVisible = false
     var choice = ""
@@ -49,6 +56,12 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var duration: UILabel!
     @IBOutlet weak var marks: UILabel!
     @IBOutlet weak var attendanceLocation: UILabel!
+    //feedback options
+    
+    @IBOutlet weak var option1: UIButton!
+    @IBOutlet weak var option2: UIButton!
+    @IBOutlet weak var option3: UIButton!
+    @IBOutlet weak var option4: UIButton!
     //instructor View outlets
     @IBOutlet weak var instructorView: UIView!
     @IBOutlet weak var subjectName: UILabel!
@@ -90,13 +103,17 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     
     func fetchQuestions(){
         
-        Alamofire.request("http://syntax-eg.esy.es/api/questionsByAdmin").responseJSON{ (Response) in
-             print(Response)
-            if let response = Response.result.value{
-           
+        Alamofire.request("http://syntax-eg.esy.es/api/questionsByAdmin").responseJSON { (Response) in
+            if  let response = Response.result.value{
+               // print("===========================\(Response)")
             let qust = JSON(response)
-            self.questions =  qust["all_Admin_Questions"].arrayValue
-            
+                
+                self.questions =  qust["all_Admin_Questions"].arrayValue
+                    
+                
+                    
+                
+            print("===========================********\(self.questions)")
             }else{
                 print("connection failed ")
             }
@@ -107,17 +124,17 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
        let tag = sender.tag
         
         switch tag {
-        case -1:
-            choice = questions[1]["option1"].stringValue
+        case 0:
+            choice = option1.currentTitle!
             break
-        case -2 :
-            choice = questions[1]["option2"].stringValue
+        case 1 :
+            choice = option2.currentTitle!
             break
-        case -3 :
-            choice = questions[1]["option3"].stringValue
+        case 2 :
+            choice = option3.currentTitle!
             break
-        case -4 :
-            choice = questions[1]["option4"].stringValue
+        case 3 :
+            choice = option4.currentTitle!
             break
       //  case -5 :
         //    choice = questions[i]["option5"].stringValue
@@ -139,18 +156,27 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         {
             if i == 5
             {
+                
                 let circle =  feedbackView.viewWithTag(i-1)as? UIImageView
                 circle?.image = UIImage(named: "ccover")
                 i-=1
                 question.text = questions[i]["question"].stringValue
+                option1.setTitle(questions[i]["option1"].stringValue, for: .normal)
+                option2.setTitle(questions[i]["option2"].stringValue, for: .normal)
+                option3.setTitle(questions[i]["option3"].stringValue, for: .normal)
+                option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             }
             let circle =  feedbackView.viewWithTag(i)as? UIImageView
             circle?.image = UIImage(named: "ccover")
             i-=1
             question.text =  questions[i]["question"].stringValue
+            option1.setTitle(questions[i]["option1"].stringValue, for: .normal)
+            option2.setTitle(questions[i]["option2"].stringValue, for: .normal)
+            option3.setTitle(questions[i]["option3"].stringValue, for: .normal)
+            option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             
         }
-        
+       print(i)
     }
     @IBAction func nextButtonPressed(_ sender: Any) {
         print("------------------------\(choice)")
@@ -161,10 +187,15 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             
             if i == 4
             {
+           
             question.text = questions[i]["question"].stringValue
+            option1.setTitle(questions[i]["option1"].stringValue, for: .normal)
+            option2.setTitle(questions[i]["option2"].stringValue, for: .normal)
+            option3.setTitle(questions[i]["option3"].stringValue, for: .normal)
+            option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             i+=1
             if i == 5
-            {
+            {   
                 thankingView.isHidden = false
                 feedbackView.isHidden = true
             }
@@ -173,9 +204,15 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             return
             }
             i+=1
+            
             question.text = questions[i]["question"].stringValue
+            option1.setTitle(questions[i]["option1"].stringValue, for: .normal)
+            option2.setTitle(questions[i]["option2"].stringValue, for: .normal)
+            option3.setTitle(questions[i]["option3"].stringValue, for: .normal)
+            option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             let circle =  feedbackView.viewWithTag(i)as? UIImageView
             circle?.image = UIImage(named: "circle")
+            
         }
         if i == 5
         {
@@ -185,8 +222,10 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
        
         
         }
-        
+        print(i)
+
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.black
@@ -195,8 +234,14 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         self.fetchQuestions()
         self.layoutConfig()
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+       
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+       print("\(questions[0]["option1"].stringValue)++++++++++++++++++\(questions[0]["option1"].stringValue)")
+        
+        
+    }
     func layoutConfig()->(){
         infoView.isHidden = true
         profImageInfo.layer.cornerRadius = 25
@@ -213,7 +258,6 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         passField.layer.cornerRadius = 10
         ok.layer.cornerRadius = 8
         print(questions)
-        question.text = questions[i]["question"].stringValue
         feedbackView.layer.borderWidth = 0.7
         feedbackView.layer.borderColor = UIColor.black.cgColor
         backBtn.layer.borderWidth = 1.3
@@ -223,6 +267,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         manualAttBtn.layer.cornerRadius = 20
         endSessionBtn.layer.cornerRadius = 20
        //++++++ instructorView.isHidden = true
+       
     }
     
    
@@ -327,14 +372,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
  
     }
     
-enum choice : String {
-    case verySatisfied = "very Satisfied"
-    case satisfied = "satisfied"
-    case notBad = "not bad"
-    case unsatisfied = "unsatisfied"
-    case veryUnsatisfied = "very unsatisfied"
-    
-}
+
     
     
   
