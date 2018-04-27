@@ -13,8 +13,8 @@ class loginVC: UIViewController {
   
    
     var loginType : loginType = .student
-    
-    
+    var student_id = 0
+    var instructor_id = 0
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var username: UITextField!
@@ -24,6 +24,8 @@ class loginVC: UIViewController {
     
    
     @IBAction func loginPressed(_ sender: Any) {
+        let ScheduleVC = storyboard?.instantiateViewController(withIdentifier: "scheduleVC")as! scheduleVC
+
         if loginType == .student
         {
             Alamofire.request("http://syntax-eg.esy.es/api/students").responseJSON { (Response) in
@@ -44,9 +46,11 @@ class loginVC: UIViewController {
                     for std in all
                     {
                         if std["username"].stringValue == student
-                        {
+                        {   self.student_id = std["id"].intValue
+                            ScheduleVC.studentID = self.student_id
+                            ScheduleVC.loginType = .student
                             self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                        
+                            
                         }else{
                             let alert =  UIAlertController(title: "LOGIN ERROR ", message: "username not found ", preferredStyle: UIAlertControllerStyle.alert)
                             alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
@@ -86,6 +90,9 @@ class loginVC: UIViewController {
                         {
                             if inst["username"].stringValue == instructor
                             {
+                                self.instructor_id = inst["id"].intValue
+                                ScheduleVC.instructorID = self.instructor_id
+                                ScheduleVC.loginType = .instructor
                                 self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                 
                             }else{
@@ -108,6 +115,7 @@ class loginVC: UIViewController {
             }
             
         }
+        navigationController?.pushViewController(ScheduleVC, animated: true)
     }
     
     

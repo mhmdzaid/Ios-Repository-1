@@ -9,10 +9,13 @@
 import UIKit
 import SwiftyJSON
 import Alamofire
+
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     //lectures and sections data
     var i = 0
-    var studentID : Int64! = 8
+    var loginType : loginType!
+    var studentID : Int = 9
+    var instructorID :Int = 0
     var questions = [JSON](repeating:"", count: 5){
         didSet{
             option1.setTitle(questions[0]["option1"].stringValue, for: .normal)
@@ -31,10 +34,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                 questionsToPost["answer\(index+1)"] = choice
             }
             print("question to post ==============>: \(questionsToPost)")
-          let url = "http://syntax-eg.esy.es/api/questionsByStudtents"
-            Alamofire.request(url, method: .post, parameters: questionsToPost, encoding: JSONEncoding.default, headers: nil).responseJSON{ (response) in
-                
-            }
+        
         }
     }
     var sideMenuVisible = false
@@ -214,6 +214,11 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             {   
                 thankingView.isHidden = false
                 feedbackView.isHidden = true
+                let url = "http://syntax-eg.esy.es/api/questionsByStudtents"
+                let header = ["content-type" : "application/json"]
+                Alamofire.request(url, method: .post, parameters: questionsToPost, encoding: JSONEncoding.default, headers: header).responseJSON{ (response) in
+                    
+                }
             }
             
             print("---------------------\(choices)")
@@ -252,13 +257,14 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
        
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-       print("\(questions[0]["option1"].stringValue)++++++++++++++++++\(questions[0]["option1"].stringValue)")
-        
-        
-    }
+    
     func layoutConfig()->(){
+        loginType = .student
+        if loginType == .instructor{
+          feedbackView.isHidden = true
+        }
+        
+        
         infoView.isHidden = true
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true
