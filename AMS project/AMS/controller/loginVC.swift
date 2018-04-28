@@ -42,6 +42,9 @@ class loginVC: UIViewController {
                 }
                 else{
                    let student = self.username.text
+                   let password = self.password.text
+                    print(student!)
+                    print(password!)
                     let all = students["all_Students"].arrayValue
                     for std in all
                     {
@@ -49,24 +52,47 @@ class loginVC: UIViewController {
                         {   self.student_id = std["id"].intValue
                             ScheduleVC.studentID = self.student_id
                             ScheduleVC.loginType = .student
-                            self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                            let url = "http://syntax-eg.esy.es/api/studentLogin"
+                           
+                         
+                            let params : [String : String] = ["username":"\(std["username"].stringValue)","password":"\(password!)"]
+                             let header = ["content-type" : "application/json"]
+
+                            Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
+                                let response = JSON(Response.result.value!)
+                                let status = response["status"].stringValue
+                                
+                                if status == "you don't have an account" {
+                                    let alert =  UIAlertController(title: "LOGIN ERROR ", message: status, preferredStyle: UIAlertControllerStyle.alert)
+                                    alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
+                                        alert.dismiss(animated: true, completion: nil)
+                                        self.username.text = ""
+                                        self.password.text = ""
+                                    }))
+                                    self.present(alert, animated: true, completion: nil)
+                                }else{
+                                    
+                                    self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                                    
+                                }
+                                
+                                print("-----------------------------------\(String(describing: Response.result.value))")
+                            })
                             
-                        }else{
-                            let alert =  UIAlertController(title: "LOGIN ERROR ", message: "username not found ", preferredStyle: UIAlertControllerStyle.alert)
-                            alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
-                                alert.dismiss(animated: true, completion: nil)
-                            }))
-                           self.present(alert, animated: true, completion: nil)
-                            self.username.text = ""
-                            self.password.text = ""
-                            
+                           break
                         }
+                        
+                        
+                        
+                       
+                            
+                        
                     }
                 }
                 
         
             }else{
-                print("error getting data ")
+                print("error getting data ***** ")
             }
         }
         
