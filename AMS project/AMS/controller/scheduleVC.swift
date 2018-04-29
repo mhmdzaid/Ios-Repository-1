@@ -140,16 +140,16 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
        let tag = sender.tag
         
         switch tag {
-        case 0:
+        case -1:
             choice = option1.currentTitle!
             break
-        case 1 :
+        case -2 :
             choice = option2.currentTitle!
             break
-        case 2 :
+        case -3 :
             choice = option3.currentTitle!
             break
-        case 3 :
+        case -4:
             choice = option4.currentTitle!
             break
       //  case -5 :
@@ -233,7 +233,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             let circle =  feedbackView.viewWithTag(i)as? UIImageView
             circle?.image = UIImage(named: "circle")
-            
+            print(i)
+
         }
         if i == 5
         {
@@ -243,8 +244,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
        
         
         }
-        print(i)
-
+        
     }
     
     override func viewDidLoad() {

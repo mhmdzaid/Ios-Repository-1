@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tq1-Yt-DOe">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -631,7 +631,7 @@ Thanks you .
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-hd-6vu" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="-2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTt-hd-6vu" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="222" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="UTQ-Q0-4KD"/>
@@ -645,7 +645,7 @@ Thanks you .
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="MAM-nF-q4F"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bP-uX-Z80" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="-3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bP-uX-Z80" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="257" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="ZNh-uq-eSa"/>
@@ -659,7 +659,7 @@ Thanks you .
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="Jp2-fT-qLL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PF-nN-bSE" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="-4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PF-nN-bSE" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="292" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="MZT-Zu-ON1"/>
@@ -673,7 +673,7 @@ Thanks you .
                                             <action selector="choiceSelected:" destination="qgS-vy-Tki" eventType="touchUpInside" id="MFd-TE-5wS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1j-2g-Fyc" customClass="DLRadioButton">
+                                    <button opaque="NO" tag="-1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1j-2g-Fyc" customClass="DLRadioButton">
                                         <rect key="frame" x="40" y="189" width="160" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="EJ8-z4-pwn"/>
@@ -1359,7 +1359,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="31" y="13" width="185" height="185"/>
+                                                <rect key="frame" x="31" y="13" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
