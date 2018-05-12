@@ -125,9 +125,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             let qust = JSON(response)
                 
                 self.questions =  qust["all_Admin_Questions"].arrayValue
-                    
                 
-                    
+                
+                
                 
             print("===========================********\(self.questions)")
             }else{
@@ -211,7 +211,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             option4.setTitle(questions[i]["option4"].stringValue, for: .normal)
             i+=1
             if i == 5
-            {   
+            {
                 thankingView.isHidden = false
                 feedbackView.isHidden = true
                 let url = "http://syntax-eg.esy.es/api/questionsByStudtents"

@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 class loginVC: UIViewController {
   
-   
+   var found = false
     var loginType : loginType = .student
     var student_id = 0
     var instructor_id = 0
@@ -30,7 +30,7 @@ class loginVC: UIViewController {
         {
             Alamofire.request("http://syntax-eg.esy.es/api/students").responseJSON { (Response) in
             if  let response = Response.result.value{
-              print(Response)
+              
               let students = JSON(response)
                 if (self.username.text?.isEmpty)! || (self.password.text?.isEmpty)!{
                    let alert =  UIAlertController(title: "LOGIN ERROR ", message: "please fill  the fields", preferredStyle: UIAlertControllerStyle.alert)
@@ -45,11 +45,14 @@ class loginVC: UIViewController {
                    let password = self.password.text
                     print(student!)
                     print(password!)
-                    let all = students["all_Students"].arrayValue
+                    let all = students["student"].arrayValue
+                    
                     for std in all
                     {
                         if std["username"].stringValue == student
-                        {   self.student_id = std["id"].intValue
+                        {
+                            self.found = true
+                            self.student_id = std["id"].intValue
                             ScheduleVC.studentID = self.student_id
                             ScheduleVC.loginType = .student
                             let url = "http://syntax-eg.esy.es/api/studentLogin"
@@ -61,33 +64,36 @@ class loginVC: UIViewController {
                             Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                 let response = JSON(Response.result.value!)
                                 let status = response["status"].stringValue
-                                
+                                print("===============>>>\(status)")
                                 if status == "you don't have an account" {
-                                    let alert =  UIAlertController(title: "LOGIN ERROR ", message: status, preferredStyle: UIAlertControllerStyle.alert)
+                                    let alert =  UIAlertController(title: "LOGIN ERROR ", message: "wrong password ", preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
                                         alert.dismiss(animated: true, completion: nil)
                                         self.username.text = ""
                                         self.password.text = ""
+                                        self.found = false
                                     }))
                                     self.present(alert, animated: true, completion: nil)
                                 }else{
                                     
                                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
-                                    
                                 }
-                                
-                                print("-----------------------------------\(String(describing: Response.result.value))")
+                                //print("-----------------------------------\(String(describing: Response.result.value))")
                             })
-                            
                            break
                         }
-                        
-                        
-                        
-                       
-                            
-                        
                     }
+                    if self.found != true {
+                    let alert2 =  UIAlertController(title: "LOGIN ERROR ", message: "wrong username ", preferredStyle: UIAlertControllerStyle.alert)
+                    alert2.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
+                        alert2.dismiss(animated: true, completion: nil)
+                        self.username.text = ""
+                        self.password.text = ""
+                    }))
+                    self.present(alert2, animated: true, completion: nil)
+                
+                    }
+                    
                 }
                 
         
@@ -110,27 +116,59 @@ class loginVC: UIViewController {
                         self.present(alert, animated: true, completion: nil)
                     }
                     else{
+                        
                         let instructor = self.username.text
-                        let all = instructors["all_Instructors"].arrayValue
+                        let password = self.password.text
+                        let all = instructors["instructor"].arrayValue
                         for inst in all
                         {
                             if inst["username"].stringValue == instructor
                             {
+                                self.found = true
                                 self.instructor_id = inst["id"].intValue
                                 ScheduleVC.instructorID = self.instructor_id
                                 ScheduleVC.loginType = .instructor
-                                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                                let url  = "http://syntax-eg.esy.es/api/instructorLogin"
                                 
-                            }else{
-                                let alert =  UIAlertController(title: "LOGIN ERROR ", message: "username not found ", preferredStyle: UIAlertControllerStyle.alert)
-                                alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
-                                    alert.dismiss(animated: true, completion: nil)
-                                }))
-                                 self.present(alert, animated: true, completion: nil)
+                                
+                                let params : [String : String] = ["username":"\(inst["username"].stringValue)","password":"\(password!)"]
+                                let header = ["content-type" : "application/json"]
+                                
+                                Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
+                                    let response = JSON(Response.result.value!)
+                                    let status = response["status"].stringValue
+                                    
+                                    if status == "you don't have an account" {
+                                        let alert =  UIAlertController(title: "LOGIN ERROR ", message: "wrong password", preferredStyle: UIAlertControllerStyle.alert)
+                                        alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
+                                            alert.dismiss(animated: true, completion: nil)
+                                            self.username.text = ""
+                                            self.password.text = ""
+                                            self.found = false
+                                        }))
+                                        self.present(alert, animated: true, completion: nil)
+                                    }else{
+                                        
+                                        self.performSegue(withIdentifier: "loginSegue", sender: nil)
+                                        
+                                    }
+                                    
+                                    print("-----------------------------------\(String(describing: Response.result.value))")
+                                })
+                                
+                                break
+                            }
+                            
+                        }
+                        if self.found != true{
+                            let alert2 =  UIAlertController(title: "LOGIN ERROR ", message: "wrong username ", preferredStyle: UIAlertControllerStyle.alert)
+                            alert2.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
+                                alert2.dismiss(animated: true, completion: nil)
                                 self.username.text = ""
                                 self.password.text = ""
-                                
-                            }
+                            }))
+                            self.present(alert2, animated: true, completion: nil)
+                            
                         }
                     }
                     
