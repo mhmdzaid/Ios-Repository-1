@@ -5,10 +5,11 @@
 //  Created by mohamed zead on 2/26/18.
 //  Copyright © 2018 zead. All rights reserved.
 //
-
+import Foundation
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SystemConfiguration.CaptiveNetwork
 class loginVC: UIViewController {
   
    var found = false
@@ -24,6 +25,9 @@ class loginVC: UIViewController {
     
    
     @IBAction func loginPressed(_ sender: Any) {
+        if checkLocation() == true{
+        
+            
         let ScheduleVC = storyboard?.instantiateViewController(withIdentifier: "scheduleVC")as! scheduleVC
 
         if loginType == .student
@@ -60,10 +64,13 @@ class loginVC: UIViewController {
                          
                             let params : [String : String] = ["username":"\(std["username"].stringValue)","password":"\(password!)"]
                              let header = ["content-type" : "application/json"]
-
+                            let paramsForPost = ["id":"\(std["id"].intValue)","name":"\(std["name"].stringValue)"]
+                            Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location", method: .post, parameters: paramsForPost, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
+                                
+                            })
                             Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                 let response = JSON(Response.result.value!)
-                                let status = response["status"].stringValue
+                                let status = response["studentLogin"].stringValue
                                 print("===============>>>\(status)")
                                 if status == "you don't have an account" {
                                     let alert =  UIAlertController(title: "LOGIN ERROR ", message: "wrong password ", preferredStyle: UIAlertControllerStyle.alert)
@@ -180,12 +187,21 @@ class loginVC: UIViewController {
             
         }
         navigationController?.pushViewController(ScheduleVC, animated: true)
+        }else{
+            let alert =  UIAlertController(title: "LOGIN ERROR ", message: " you are home or someWhere 😃 ", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
+                alert.dismiss(animated: true, completion: nil)
+                self.username.text = ""
+                self.password.text = ""
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
         logo.layer.cornerRadius = 90
         logo.clipsToBounds = true
         logo.layer.borderColor = UIColor.white.cgColor
@@ -195,6 +211,24 @@ class loginVC: UIViewController {
         print(self.loginType)
     }
 
+    func checkLocation()->Bool{
+        var ssid: String?
+        if let interfaces = CNCopySupportedInterfaces() as NSArray? {
+            for interface in interfaces {
+                if let interfaceInfo = CNCopyCurrentNetworkInfo(interface as! CFString) as NSDictionary? {
+                    ssid = interfaceInfo[kCNNetworkInfoKeySSID as String] as? String
+                    break
+                }
+            }
+        }
+        print("the ssid is =========>>>>>>>>>>>\(String(describing: ssid))")
+        ssid = "_BUG_"
+        if ssid == "_BUG_"
+        {
+            return true
+        }
+        else{return false}
+    }
 }
 enum loginType {
     

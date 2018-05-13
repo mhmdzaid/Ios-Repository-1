@@ -124,7 +124,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                // print("===========================\(Response)")
             let qust = JSON(response)
                 
-                self.questions =  qust["all_Admin_Questions"].arrayValue
+                self.questions =  qust["admin_Questions"].arrayValue
                 
                 
                 
