@@ -7,17 +7,36 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
 class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
-  
-    var students = ["ahmed ","abdullah " , "gemy ", "diasty"]
-    var studentsUpdated :[String]?
+   
+    var students : [String]! = []{
+        didSet{
+            studentsUpdated = students
+        }
+    }
+    var studentsUpdated :[String]?{
+        didSet{
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        fetchStudents()
         studentsUpdated = students
+      
+        }
+    override func viewWillAppear(_ animated: Bool) {
+        let timer = Timer.scheduledTimer(withTimeInterval:300 , repeats: true) { (Timer) in
+            self.fetchStudents()
+        }
+        timer.fire()
+        tableView.reloadData()
     }
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -63,6 +82,25 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
         
+    }
+    
+    func fetchStudents(){
+       
+        
+        Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location").responseJSON { (Response) in
+            if let result = Response.result.value{
+            let array = JSON(result)
+            let all_Students = array["students_in_Location"].arrayValue
+              for student in all_Students
+              {
+                if !self.students.contains(student["name"].stringValue)
+                {
+                    self.students.append(student["name"].stringValue)
+                }
+              }
+                
+            }
+        }
     }
     
     }
