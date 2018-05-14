@@ -141,7 +141,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dES-n0-LA8">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7j-2Z-fff">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
@@ -178,7 +178,7 @@
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4ND-xi-6uE">
-                                        <rect key="frame" x="0.0" y="90" width="320" height="429"/>
+                                        <rect key="frame" x="0.0" y="90" width="320" height="478"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="113" id="7Hc-Ij-tcT" customClass="scheduleCellTableViewCell" customModule="AMS" customModuleProvider="target">
@@ -434,7 +434,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L07-3c-gSU">
-                                <rect key="frame" x="40" y="151" width="240" height="151"/>
+                                <rect key="frame" x="40" y="200" width="240" height="151"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vac-Am-RDU">
                                         <rect key="frame" x="27" y="20" width="185" height="92"/>
@@ -1004,8 +1004,9 @@ Thanks you .
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kmm-p9-cFi">
-                                <rect key="frame" x="0.0" y="90" width="320" height="478"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="studentCell" rowHeight="113" id="mPj-e5-b8d" customClass="StudentCell" customModule="AMS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="113"/>
@@ -1023,7 +1024,7 @@ Thanks you .
                                                             <color key="backgroundColor" red="0.13794897510000001" green="0.65056008470000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </imageView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="85" id="4oj-jJ-zKo"/>
                                                         <constraint firstAttribute="width" constant="85" id="pKv-JJ-mKv"/>
@@ -1076,7 +1077,7 @@ Thanks you .
                                                 <constraint firstItem="yXR-6r-Gcj" firstAttribute="leading" secondItem="qg6-dn-Asd" secondAttribute="trailing" constant="11" id="XeY-DS-o5x"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="qg6-dn-Asd" firstAttribute="leading" secondItem="mPj-e5-b8d" secondAttribute="leading" id="eT6-2r-hSm"/>
                                         </constraints>
@@ -1102,14 +1103,29 @@ Thanks you .
                                     <string>Title</string>
                                 </scopeButtonTitles>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50E-z8-pPn">
+                                <rect key="frame" x="0.0" y="506" width="320" height="62"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Dissmiss">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qgS-vy-Tki" kind="show" id="hWf-2f-tlh"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cw4-ZV-Ild" firstAttribute="leading" secondItem="f0c-XX-8fO" secondAttribute="leading" id="2Tj-RZ-TjW"/>
+                            <constraint firstItem="50E-z8-pPn" firstAttribute="top" secondItem="kmm-p9-cFi" secondAttribute="bottom" id="CYF-Fa-dVR"/>
                             <constraint firstItem="cw4-ZV-Ild" firstAttribute="trailing" secondItem="f0c-XX-8fO" secondAttribute="trailing" id="Cvm-U5-Xno"/>
                             <constraint firstItem="kmm-p9-cFi" firstAttribute="leading" secondItem="f0c-XX-8fO" secondAttribute="leading" id="Hct-Y0-QvD"/>
                             <constraint firstItem="cw4-ZV-Ild" firstAttribute="top" secondItem="Hkg-Ud-YoC" secondAttribute="top" id="Irl-2h-LfT"/>
-                            <constraint firstItem="kmm-p9-cFi" firstAttribute="bottom" secondItem="f0c-XX-8fO" secondAttribute="bottom" id="ca2-wq-oZO"/>
+                            <constraint firstItem="f0c-XX-8fO" firstAttribute="trailing" secondItem="50E-z8-pPn" secondAttribute="trailing" id="Qzo-E8-QF3"/>
+                            <constraint firstItem="f0c-XX-8fO" firstAttribute="bottom" secondItem="50E-z8-pPn" secondAttribute="bottom" id="Td7-QF-yrO"/>
+                            <constraint firstItem="50E-z8-pPn" firstAttribute="leading" secondItem="f0c-XX-8fO" secondAttribute="leading" id="Y6x-xS-xrZ"/>
+                            <constraint firstItem="kmm-p9-cFi" firstAttribute="bottom" secondItem="f0c-XX-8fO" secondAttribute="bottom" constant="-62" id="ca2-wq-oZO"/>
                             <constraint firstItem="kmm-p9-cFi" firstAttribute="trailing" secondItem="f0c-XX-8fO" secondAttribute="trailing" id="eJ6-8t-VTm"/>
                             <constraint firstItem="kmm-p9-cFi" firstAttribute="top" secondItem="cw4-ZV-Ild" secondAttribute="bottom" id="h7t-ef-fsu"/>
                             <constraint firstItem="kmm-p9-cFi" firstAttribute="leading" secondItem="f0c-XX-8fO" secondAttribute="leading" id="tEX-6S-DbZ"/>
@@ -1353,7 +1369,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="32" y="13" width="186" height="185"/>
+                                                <rect key="frame" x="31" y="13" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1484,6 +1500,7 @@ Thanks you .
         <image name="whiteStudent" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="hWf-2f-tlh"/>
         <segue reference="8vV-kK-3oy"/>
     </inferredMetricsTieBreakers>
 </document>

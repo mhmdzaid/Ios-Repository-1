@@ -58,7 +58,8 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
      cell.layer.borderColor = UIColor.black.cgColor
      cell.studentName.text = studentsUpdated![indexPath.row]
      cell.studentImage.layer.cornerRadius = 35
-     
+     cell.layer.borderWidth = 1
+     cell.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
 
     return cell
     }
