@@ -24,7 +24,7 @@ class NotificationVC: UIViewController {
         }
         else{
             sideMenuVisible = true
-            self.view.alpha = 0.6
+            self.view.alpha = 0.85
         }
     }
     

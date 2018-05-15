@@ -113,7 +113,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
         else{
             sideMenuVisible = true
-            self.view.alpha = 0.6
+            self.view.alpha = 0.85
         }
     }
     
@@ -334,8 +334,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
         let button = UIButton(type: .system)
       // button.imageRect(forContentRect: CGRect(x: 30, y: 20, width:10, height:10))
-        
-        button.setTitle(days[section], for: .normal)
+    
+        button.setTitle("  \(days[section])", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
@@ -345,6 +345,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         button.contentHorizontalAlignment = .left
         button.tag = section
         button.setImage(minus, for: .normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
         
