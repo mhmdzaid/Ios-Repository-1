@@ -9,8 +9,18 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
-class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
+class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,StudentCellDelegate{
+    
+
+    func pauseButtonPressed(cellResume: UIView) {
+        cellResume.isHidden = false
+    }
+    func resumeButtonPressed(cellResume: UIView) {
+        cellResume.isHidden = true
+    }
    
+    
+    
     var students : [String]! = []{
         didSet{
             studentsUpdated = students
@@ -43,7 +53,18 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
     
 
     @IBOutlet weak var tableView: UITableView!
-
+//
+//    @IBAction func pausePressed(_ sender: UIButton) {
+//        let cell = sender.superview?.superview as! StudentCell
+//        let indexPath = tableView.indexPath(for: cell)
+//        cell.vieww.isHidden = false
+//    }
+    
+//    @IBAction func resumePressed(_ sender: UIButton) {
+//        let cell = sender.superview?.superview as! StudentCell
+//        let indexPath = tableView.indexPath(for: cell)
+//        cell.vieww.isHidden = false
+//    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return studentsUpdated!.count
     }
@@ -54,19 +75,24 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell") as? StudentCell else{
             return UITableViewCell()
         }
+     cell.delegate = self
      cell.layer.borderWidth = 0.6
      cell.layer.borderColor = UIColor.black.cgColor
      cell.studentName.text = studentsUpdated![indexPath.row]
      cell.studentImage.layer.cornerRadius = 35
      cell.layer.borderWidth = 1
      cell.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-
+    
+     
     return cell
     }
+    
+   
+   
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
-    
+  
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard !searchText.isEmpty else {
             studentsUpdated = students
