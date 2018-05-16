@@ -11,11 +11,16 @@ import SwiftyJSON
 import Alamofire
 
 class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
+   
+    
     //lectures and sections data
+ 
     var i = 0
     var loginType : loginType!
     var studentID : Int = 9
+    var studentLevel : Int?
     var instructorID :Int = 0
+    
     var questions = [JSON](repeating:"", count: 5){
         didSet{
             option1.setTitle(questions[0]["option1"].stringValue, for: .normal)
@@ -197,7 +202,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBAction func nextButtonPressed(_ sender: Any) {
         print("------------------------\(choice)")
         choices[i] = choice
-    
+        
         if i<5
         {
             
@@ -247,24 +252,27 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.view.backgroundColor = UIColor.black
         tableView.delegate = self
         tableView.dataSource = self
         self.fetchQuestions()
         self.layoutConfig()
+
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        if   revealViewController().loginType ==  0{
+            self.loginType = .student
+        }else{
+            self.loginType = .instructor
+        }
+        print("-----------------------\(loginType)--------------")
        
     }
     
     func layoutConfig()->(){
-        loginType = .student
-        if loginType == .instructor{
-          feedbackView.isHidden = true
-        }
-        
-        
         infoView.isHidden = true
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true

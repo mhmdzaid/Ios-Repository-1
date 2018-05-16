@@ -312,7 +312,8 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 
 // Delegate
 @property (nonatomic,weak) id<SWRevealViewControllerDelegate> delegate;
-
+@property (nonatomic) int studentLeve ;
+@property (nonatomic) int LoginType ;
 @end
 
 
@@ -383,6 +384,7 @@ typedef enum
 - (void)revealController:(SWRevealViewController *)revealController panGestureMovedToLocation:(CGFloat)location progress:(CGFloat)progress; // (DEPRECATED)
 - (void)revealController:(SWRevealViewController *)revealController panGestureEndedToLocation:(CGFloat)location progress:(CGFloat)progress; // (DEPRECATED)
 @end
+
 
 
 #pragma mark - UIViewController(SWRevealViewController) Category

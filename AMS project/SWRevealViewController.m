@@ -762,6 +762,7 @@ const int FrontViewPositionNone = 0xff;
 }
 
 
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     // we could have simply not implemented this, but we choose to call super to make explicit that we
@@ -800,7 +801,6 @@ const int FrontViewPositionNone = 0xff;
     
     [self _dispatchPushFrontViewController:frontViewController animated:animated];
 }
-
 
 - (void)setRearViewController:(UIViewController *)rearViewController
 {

@@ -10,10 +10,14 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SystemConfiguration.CaptiveNetwork
+
+
+
+
+
 class loginVC: UIViewController {
-  
    var found = false
-    var loginType : loginType = .student
+    var loginType : loginType?
     var student_id = 0
     var instructor_id = 0
     
@@ -32,6 +36,7 @@ class loginVC: UIViewController {
 
         if loginType == .student
         {
+           
             Alamofire.request("http://syntax-eg.esy.es/api/students").responseJSON { (Response) in
             if  let response = Response.result.value{
               
@@ -111,6 +116,7 @@ class loginVC: UIViewController {
         
     }
         else{
+
             Alamofire.request("http://syntax-eg.esy.es/api/instructors").responseJSON { (Response) in
                 if  let response = Response.result.value{
                     
@@ -198,6 +204,16 @@ class loginVC: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "loginSegue"{
+            let swreveal = segue.destination as! SWRevealViewController
+            if loginType == .student{
+            swreveal.loginType = 0
+            }else{
+                swreveal.loginType = 1
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
