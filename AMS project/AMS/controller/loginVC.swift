@@ -20,7 +20,7 @@ class loginVC: UIViewController {
     var loginType : loginType?
     var student_id = 0
     var instructor_id = 0
-    
+    var studentLevel : String?
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
@@ -65,8 +65,8 @@ class loginVC: UIViewController {
                             ScheduleVC.studentID = self.student_id
                             ScheduleVC.loginType = .student
                             let url = "http://syntax-eg.esy.es/api/studentLogin"
-                           
-                         
+                            self.studentLevel = std["level"].stringValue
+                          
                             let params : [String : String] = ["username":"\(std["username"].stringValue)","password":"\(password!)"]
                              let header = ["content-type" : "application/json"]
                             let paramsForPost = ["id":"\(std["id"].intValue)","name":"\(std["name"].stringValue)"]
@@ -209,6 +209,7 @@ class loginVC: UIViewController {
             let swreveal = segue.destination as! SWRevealViewController
             if loginType == .student{
             swreveal.loginType = 0
+                swreveal.studentLevel = Int32(self.studentLevel!)!
             }else{
                 swreveal.loginType = 1
             }

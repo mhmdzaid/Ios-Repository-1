@@ -10,6 +10,6 @@ import Foundation
 struct ExpandableNames {
     
     var isExpanded : Bool
-    let subjects : [String : String]
+    let subjectInfo : [String : String]
     
 }

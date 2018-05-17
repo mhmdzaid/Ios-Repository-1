@@ -30,7 +30,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
     }
     var questionsToPost : [String : Any] = [:]
-    var choices  = [String](repeating:"", count: 5){
+    var choices  = [String](repeating:"", count: 5){   //storing choices selected by the student
         didSet{
             
             questionsToPost = ["student_id": studentID]
@@ -44,15 +44,12 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     var sideMenuVisible = false
     var choice = ""
-    var subject = [
+    var schedule : [JSON]!
+    var subject : [ExpandableNames]! = []
         
-        ExpandableNames(isExpanded: true, subjects: ["subject":"computer vision","time" : "10:12 AM","type" : "section" ]),
-        ExpandableNames(isExpanded: true, subjects:  ["subject":"Neural network","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects:   ["subject":"image processing","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects:  ["subject":"operating system","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects:  ["subject":"Network","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects: ["subject":"Network","time" : "2:00","type" : "lecture"]),
-        ExpandableNames(isExpanded: true, subjects: ["subject":"algorithm","time" : "2:00","type" : "lecture"])]
+    
+        
+    
     
     let days  = ["  saturday","  sunday","  monday","  tuseday","  wednisday ","  thursday"]
     let minus =  UIImage(named: "Shape 1")
@@ -121,7 +118,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             self.view.alpha = 0.85
         }
     }
-    
+    // getting questions from the server
     func fetchQuestions(){
         
         Alamofire.request("http://syntax-eg.esy.es/api/questionsByAdmin").responseJSON { (Response) in
@@ -141,6 +138,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
         
     }
+    
+    // here we actually store the choice  of the radio button
+    
     @IBAction func choiceSelected(_ sender: DLRadioButton) {
        let tag = sender.tag
         
@@ -157,9 +157,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         case -4:
             choice = option4.currentTitle!
             break
-      //  case -5 :
-        //    choice = questions[i]["option5"].stringValue
-        //    break
+      
         default:
             print("wrong coding ")
         }
@@ -171,6 +169,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             passField.isSecureTextEntry = true
         }
     }
+    
+    // functionality of backbutton of the feedback view
     @IBAction func backButtonPressed(_ sender: Any) {
         
         if i>0
@@ -199,6 +199,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
        print(i)
     }
+     // functionality of next button of the feedback view
     @IBAction func nextButtonPressed(_ sender: Any) {
         print("------------------------\(choice)")
         choices[i] = choice
@@ -255,34 +256,36 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+         self.fetchQuestions()
+         self.layoutConfig()
         self.view.backgroundColor = UIColor.black
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.fetchQuestions()
-        self.layoutConfig()
+      
 
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         if   revealViewController().loginType ==  0{
             self.loginType = .student
+            self.studentLevel = Int(revealViewController().studentLevel)
         }else{
             self.loginType = .instructor
         }
-        print("-----------------------\(loginType)--------------")
-       
+        print("-----------------------\(loginType)--------------\(studentLevel)-----------")
+        
     }
     
     func layoutConfig()->(){
-        infoView.isHidden = true
+        let url = "http://syntax-eg.esy.es/api/schedule"
+        fetchingSchedule(url:url) {        // rendering tableView data after completion of the request
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
+        }
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true
         profImageInfo.backgroundColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
-        thankingView.isHidden = true
         thankingView.layer.borderColor = UIColor.black.cgColor
         thankingView.layer.borderWidth = 0.3
         passwordView.layer.borderColor = UIColor.black.cgColor
         passwordView.layer.borderWidth = 0.3
-      //  passwordView.isHidden = true
         passField.layer.borderColor = #colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1)
         passField.layer.borderWidth = 1
         passField.layer.cornerRadius = 10
@@ -296,22 +299,47 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         nextBtn.layer.cornerRadius = 20
         manualAttBtn.layer.cornerRadius = 20
         endSessionBtn.layer.cornerRadius = 20
-       //++++++ instructorView.isHidden = true
-       
+        instructorView.isHidden = true
     }
     
+    
+    func fetchingSchedule(url : String,completion :@escaping ()->()){
+        Alamofire.request(url).responseJSON{ (Response) in
+            if let dataFromServ = Response.result.value{
+                let responseINJson = JSON(dataFromServ)
+                
+                self.schedule = responseINJson["schedule"].arrayValue
+                self.subject = []
+                for sub in self.schedule
+                {
+                    
+                    let subjectName = sub["subjectName"].stringValue
+                    let time = sub["startTime"].stringValue
+                    let type = sub["type"].stringValue
+                    let location = sub["Location"].stringValue
+                    let professorName = sub["instructorName"].stringValue
+                    self.subject.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName]))
+                }
+            }else{
+                print("connection error ")
+            }
+            completion()
+        }
+        
+    }
    
  
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier:"cell" ) as? scheduleCellTableViewCell else{
             return UITableViewCell()
         }
+        
         cell.ProfImage.layer.cornerRadius = 33
         cell.ProfImage.clipsToBounds = true
         cell.ProfImage.backgroundColor = UIColor.white
-        cell.timeLbl.text = subject[indexPath.row].subjects["time"]
-        cell.subjectLbl.text = subject[indexPath.row].subjects["subject"]
-        cell.TypeLbl.text = subject[indexPath.row].subjects["type"]
+        cell.timeLbl.text = subject[indexPath.row].subjectInfo["time"]
+        cell.subjectLbl.text = subject[indexPath.row].subjectInfo["subject"]
+        cell.TypeLbl.text = subject[indexPath.row].subjectInfo["type"]
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.borderWidth = 0.7
         
@@ -321,17 +349,23 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         return days.count;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !subject[section].isExpanded{
+        
+         if !subject[section].isExpanded{
             
             return 0
-        }
-        return subject[section].subjects.count
+         }
+        
+        return subject.count
     }
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         infoView.isHidden = false
         thankingView.isHidden = true
-        subjectInfo.text = subject[indexPath.row].subjects["subject"]
-        startTime.text = subject[indexPath.row].subjects["time"]
+        subjectInfo.text = subject[indexPath.row].subjectInfo["subject"]
+        startTime.text = subject[indexPath.row].subjectInfo["time"]
+        attendanceLocation.text = subject[indexPath.row].subjectInfo["location"]
+        professorNameInfo.text = subject[indexPath.row].subjectInfo["ProfessorName"]
          tableView.alpha = 0.4
       
     }
@@ -339,10 +373,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     
    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        // adding button view as header of the table to work as expand collapse menu
         let button = UIButton(type: .system)
-      // button.imageRect(forContentRect: CGRect(x: 30, y: 20, width:10, height:10))
-    
+        
         button.setTitle("  \(days[section])", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
@@ -373,12 +406,13 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100    }
     
-    @objc func expandCollapse(button:UIButton){
+    @objc func expandCollapse(button:UIButton){ //here we check if expanded or not
+        print("++++++++++++++++ \(self.subject)++++++")
         thankingView.isHidden = true
         print(button.tag)
         let section = button.tag
         var indexPaths = [IndexPath]()
-       for row in 0..<subject[section].subjects.count
+       for row in 0..<subject.count
        {
             let indexpath = IndexPath(row: row, section: section)
             indexPaths.append(indexpath)
@@ -393,6 +427,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }else{
             
             tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.top)
+            self.tableView.scrollToRow(at: indexPaths[indexPaths.count-1], at: UITableViewScrollPosition.bottom, animated: true)
              button.setImage(minus, for: .normal)
         
         }
