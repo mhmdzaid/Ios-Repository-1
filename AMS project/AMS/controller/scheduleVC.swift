@@ -45,13 +45,13 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     var sideMenuVisible = false
     var choice = ""
     var schedule : [JSON]!
-    var subject : [ExpandableNames]! = []
+    var subject : [String :[ExpandableNames]]! = ["Saturday":[],"Sunday":[],"Monday":[],"Tuesday":[],"Wednesday":[],"Thursday":[]]
         
     
         
     
     
-    let days  = ["  saturday","  sunday","  monday","  tuseday","  wednisday ","  thursday"]
+    let days  = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"]
     let minus =  UIImage(named: "Shape 1")
     let plus = UIImage(named: "pls")
     //outlets
@@ -278,6 +278,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
+            print("^^^^^^^^^^^^^^^^^^^^^^^^^\(self.subject["Wednesday"]?.count)^^^^^^^^^^^^^^^^")
         }
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true
@@ -309,7 +310,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                 let responseINJson = JSON(dataFromServ)
                 
                 self.schedule = responseINJson["schedule"].arrayValue
-                self.subject = []
+                
                 for sub in self.schedule
                 {
                     
@@ -318,8 +319,35 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                     let type = sub["type"].stringValue
                     let location = sub["Location"].stringValue
                     let professorName = sub["instructorName"].stringValue
-                    self.subject.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName]))
+                    let totalMarks = sub["totalMark"].stringValue
+                    let day = sub["day"].stringValue
+                    print("day ===== = = = = =\(day) ")
+                    switch day {
+                    case "Saturday":
+                        self.subject["Saturday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                    case "Sunday":
+                         self.subject["Sunday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                    case "Monday":
+                         self.subject["Monday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                    case "Tuesday":
+                         self.subject["Tuesday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                    case "Wednesday":
+                         self.subject["Wednesday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                    case "Thursday":
+                        self.subject["Thursday"]?.append(ExpandableNames(isExpanded: true, subjectInfo:["subject": subjectName, "time" : time,"type" : type,"location":location,"ProfessorName":professorName,"totalMarks":totalMarks]))
+                        break
+                        
+                    default :
+                        break
+                    }
+                    
                 }
+               
             }else{
                 print("connection error ")
             }
@@ -337,38 +365,127 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         cell.ProfImage.layer.cornerRadius = 33
         cell.ProfImage.clipsToBounds = true
         cell.ProfImage.backgroundColor = UIColor.white
-        cell.timeLbl.text = subject[indexPath.row].subjectInfo["time"]
-        cell.subjectLbl.text = subject[indexPath.row].subjectInfo["subject"]
-        cell.TypeLbl.text = subject[indexPath.row].subjectInfo["type"]
-        cell.layer.borderColor = UIColor.black.cgColor
-        cell.layer.borderWidth = 0.7
-        
+        switch indexPath.section {
+        case 0:
+            cell.timeLbl.text = subject["Saturday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Saturday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Saturday"]![indexPath.row].subjectInfo["type"]
+            break
+        case 1 :
+            
+            cell.timeLbl.text = subject["Sunday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Sunday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Sunday"]![indexPath.row].subjectInfo["type"]
+            
+            break
+        case 2 :
+            cell.timeLbl.text = subject["Monday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Monday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Monday"]![indexPath.row].subjectInfo["type"]
+
+            break
+        case 3 :
+            cell.timeLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["type"]
+
+            break
+        case 4:
+            cell.timeLbl.text = subject["Wednesday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Wednesday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Wednesday"]![indexPath.row].subjectInfo["type"]
+            break
+        case 5 :
+            cell.timeLbl.text = subject["Thursday"]![indexPath.row].subjectInfo["time"]
+            cell.subjectLbl.text = subject["Thursday"]![indexPath.row].subjectInfo["subject"]
+            cell.TypeLbl.text = subject["Thursday"]![indexPath.row].subjectInfo["type"]
+            break
+        default:
+            break
+        }
+     
         return cell
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return days.count;
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // for expanding and collapsing
         
-         if !subject[section].isExpanded{
-            
+        
+        if !subject[days[section]]![0].isExpanded{
             return 0
-         }
-        
-        return subject.count
+        }
+      
+        return self.subject[days[section]]!.count
+      
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         infoView.isHidden = false
         thankingView.isHidden = true
-        subjectInfo.text = subject[indexPath.row].subjectInfo["subject"]
-        startTime.text = subject[indexPath.row].subjectInfo["time"]
-        attendanceLocation.text = subject[indexPath.row].subjectInfo["location"]
-        professorNameInfo.text = subject[indexPath.row].subjectInfo["ProfessorName"]
+        
+        switch indexPath.section {
+        case 0:
+            subjectInfo.text = subject["Saturday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Saturday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Saturday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Saturday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Saturday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        case 1:
+            subjectInfo.text = subject["Sunday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Sunday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Sunday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Sunday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Sunday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        case 2:
+            subjectInfo.text = subject["Monday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Monday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Monday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Monday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Monday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        case 3:
+            subjectInfo.text = subject["Tuesday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Tuesday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Tuesday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Tuesday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Tuesday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        case 4:
+            subjectInfo.text = subject["Wednesday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Wednesday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Wednesday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Wednesday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Wednesday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        case 5:
+            subjectInfo.text = subject["Thursday"]![indexPath.row].subjectInfo["subject"]
+            startTime.text = subject["Thursday"]![indexPath.row].subjectInfo["time"]
+            attendanceLocation.text = subject["Thursday"]![indexPath.row].subjectInfo["location"]
+            professorNameInfo.text = subject["Thursday"]![indexPath.row].subjectInfo["ProfessorName"]
+            self.marks.text = subject["Thursday"]![indexPath.row].subjectInfo["totalMarks"]! + " Marks"
+
+            break
+        default:
+            break
+        }
+        
+        
+       
          tableView.alpha = 0.4
       
     }
+    
     
     
    
@@ -376,7 +493,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         // adding button view as header of the table to work as expand collapse menu
         let button = UIButton(type: .system)
         
-        button.setTitle("  \(days[section])", for: .normal)
+        button.setTitle("    \(days[section])", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.1379489751, green: 0.6505600847, blue: 1, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 30)
         button.backgroundColor = #colorLiteral(red: 0.9999960065, green: 1, blue: 1, alpha: 1)
@@ -389,17 +506,24 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         button.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
+        print("check ------------- \(subject[days[section]])")
         
-        if subject[section].isExpanded{
+
+        if subject[days[section]]![0].isExpanded{
             button.setImage(minus, for: .normal)
             button.imageView?.image = minus
         }else{
             
             button.setImage(plus, for: .normal)
             
+            }
+        
+         return button
         }
-        return button
-    }
+    
+
+
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
@@ -407,19 +531,52 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         return 100    }
     
     @objc func expandCollapse(button:UIButton){ //here we check if expanded or not
-        print("++++++++++++++++ \(self.subject)++++++")
+       
         thankingView.isHidden = true
         print(button.tag)
         let section = button.tag
         var indexPaths = [IndexPath]()
-       for row in 0..<subject.count
+       
+      //  print("number of days of selected section \(self.subject[dayss[section]])")
+        
+        for row in 0..<self.subject[days[section]]!.count
        {
             let indexpath = IndexPath(row: row, section: section)
             indexPaths.append(indexpath)
         }
-       
-        let isExpanded = subject[section].isExpanded
-        subject[section].isExpanded = !isExpanded
+        var isExpanded  : Bool!
+        var day :String = ""
+        switch section {
+        case 0:
+             day = "Saturday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        case 1:
+            day = "Sunday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        case 2:
+            day = "Monday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        case 3:
+            day = "Tuesday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        case 4:
+             day = "Wednesday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        case 5:
+             day = "Thursday"
+             isExpanded = subject[day]![0].isExpanded
+            break
+        default:
+            break
+        }
+        
+        
+        subject[day]![0].isExpanded = !isExpanded
         if isExpanded{
             tableView.deleteRows(at: indexPaths, with: UITableViewRowAnimation.fade)
              button.setImage(plus, for: .normal)
