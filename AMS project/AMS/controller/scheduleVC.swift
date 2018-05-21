@@ -363,6 +363,8 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }
         
         cell.ProfImage.layer.cornerRadius = 33
+        cell.layer.borderColor = UIColor.white.cgColor
+        cell.layer.borderWidth = 1.2
         cell.ProfImage.clipsToBounds = true
         cell.ProfImage.backgroundColor = UIColor.white
         switch indexPath.section {
@@ -388,7 +390,6 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             cell.timeLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["time"]
             cell.subjectLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["subject"]
             cell.TypeLbl.text = subject["Tuesday"]![indexPath.row].subjectInfo["type"]
-
             break
         case 4:
             cell.timeLbl.text = subject["Wednesday"]![indexPath.row].subjectInfo["time"]
@@ -506,7 +507,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         button.imageEdgeInsets = UIEdgeInsetsMake(0, 10, 0, -10);
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.black.cgColor
-        print("check ------------- \(subject[days[section]])")
+        print("check ------------- \(days[section])")
         
 
         if subject[days[section]]![0].isExpanded{
@@ -545,38 +546,11 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             indexPaths.append(indexpath)
         }
         var isExpanded  : Bool!
-        var day :String = ""
-        switch section {
-        case 0:
-             day = "Saturday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        case 1:
-            day = "Sunday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        case 2:
-            day = "Monday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        case 3:
-            day = "Tuesday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        case 4:
-             day = "Wednesday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        case 5:
-             day = "Thursday"
-             isExpanded = subject[day]![0].isExpanded
-            break
-        default:
-            break
-        }
+        
+        isExpanded = subject[days[section]]![0].isExpanded
         
         
-        subject[day]![0].isExpanded = !isExpanded
+        subject[days[section]]![0].isExpanded = !isExpanded
         if isExpanded{
             tableView.deleteRows(at: indexPaths, with: UITableViewRowAnimation.fade)
              button.setImage(plus, for: .normal)

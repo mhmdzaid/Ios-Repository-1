@@ -20,12 +20,9 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
     }
    
     
+    var students_ids : [Int]! = []
+    var students : [String]! = []
     
-    var students : [String]! = []{
-        didSet{
-            studentsUpdated = students
-        }
-    }
     var studentsUpdated :[String]?{
         didSet{
             tableView.reloadData()
@@ -34,16 +31,22 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        
         searchBar.delegate = self
-        fetchStudents()
-        studentsUpdated = students
+        fetchStudents {
+            self.studentsUpdated = self.students
+            self.tableView.delegate = self
+            self.tableView.dataSource = self
+            self.tableView.reloadData()
+        }
+        
       
         }
     override func viewWillAppear(_ animated: Bool) {
         let timer = Timer.scheduledTimer(withTimeInterval:300 , repeats: true) { (Timer) in
-            self.fetchStudents()
+            self.fetchStudents {
+                
+            }
         }
         timer.fire()
         tableView.reloadData()
@@ -82,7 +85,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
      cell.studentImage.layer.cornerRadius = 35
      cell.layer.borderWidth = 1
      cell.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
-    
+     cell.id = students_ids[indexPath.row]
      
     return cell
     }
@@ -111,7 +114,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         
     }
     
-    func fetchStudents(){
+    func fetchStudents(completion : @escaping ()->()){
        
         
         Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location").responseJSON { (Response) in
@@ -123,11 +126,13 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
                 if !self.students.contains(student["name"].stringValue)
                 {
                     self.students.append(student["name"].stringValue)
+                    self.students_ids.append(student["id"].intValue)
                 }
               }
                 
             }
         }
+        completion()
     }
     
     }
