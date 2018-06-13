@@ -70,9 +70,7 @@ class loginVC: UIViewController {
                             let params : [String : String] = ["username":"\(std["username"].stringValue)","password":"\(password!)"]
                              let header = ["content-type" : "application/json"]
                             let paramsForPost = ["id":"\(std["id"].intValue)","name":"\(std["name"].stringValue)"]
-                            Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location", method: .post, parameters: paramsForPost, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
-                                
-                            })
+                            
                             Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                 let response = JSON(Response.result.value!)
                                 let status = response["studentLogin"].stringValue
@@ -87,7 +85,10 @@ class loginVC: UIViewController {
                                     }))
                                     self.present(alert, animated: true, completion: nil)
                                 }else{
-                                    
+                                    Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location", method: .post, parameters: paramsForPost, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
+                                        
+                                    })
+                                    print("leve of the student XXXXXXXXXXXXXXXXXXX \(self.studentLevel)")
                                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                 }
                                 //print("-----------------------------------\(String(describing: Response.result.value))")
@@ -209,7 +210,7 @@ class loginVC: UIViewController {
             let swreveal = segue.destination as! SWRevealViewController
             if loginType == .student{
             swreveal.loginType = 0
-                swreveal.studentLevel = Int32(self.studentLevel!)!
+                swreveal.studentLevel = self.studentLevel
             }else{
                 swreveal.loginType = 1
             }

@@ -21,7 +21,11 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
    
     
     var students_ids : [Int]! = []
-    var students : [String]! = []
+    var students : [String]! = []{
+        didSet{
+            self.studentsUpdated = self.students
+        }
+    }
     
     var studentsUpdated :[String]?{
         didSet{

@@ -25,7 +25,8 @@ class StudentCell : UITableViewCell {
     @IBOutlet weak var studentImage: UIImageView!
     
     @IBAction func pausePressed(_ sender: Any) {
-       print("hello world ")
+       
+        print("_____________\(self.studentName.text)__________")
         self.delegate?.pauseButtonPressed(cellResume: vieww)
         timer  = Timer.scheduledTimer(timeInterval: 1 , target: self, selector: #selector(startTime), userInfo: nil, repeats: true)
         timer.fire()
@@ -52,7 +53,7 @@ class StudentCell : UITableViewCell {
         
         if minute == 0 && seconds == 0 {
             self.timer.invalidate()
-            self.isUserInteractionEnabled = false
+           // self.isUserInteractionEnabled = false
             let headers  =  ["content-type" : "application/json"]
             let url = "http://syntax-eg.esy.es/api/students_in_Location/"+String(self.id)
             Alamofire.request(url, method: .delete, parameters: nil, encoding:JSONEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in

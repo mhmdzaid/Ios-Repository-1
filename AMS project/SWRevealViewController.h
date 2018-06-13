@@ -312,7 +312,7 @@ typedef NS_ENUM(NSInteger, SWRevealToggleAnimationType)
 
 // Delegate
 @property (nonatomic,weak) id<SWRevealViewControllerDelegate> delegate;
-@property (nonatomic) int studentLevel ;
+@property (nonatomic) NSString* studentLevel ;
 @property (nonatomic) int LoginType ;
 @end
 
