@@ -18,7 +18,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     var i = 0
     var loginType : loginType!
     var studentID : Int = 9
-    var studentLevel : Int?
+    var studentLevel : String?
     var instructorID :Int = 0
     
     var questions = [JSON](repeating:"", count: 5){
@@ -126,7 +126,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
                // print("===========================\(Response)")
             let qust = JSON(response)
                 
-                self.questions =  qust["admin_Questions"].arrayValue
+                self.questions =  qust["data"].arrayValue
                 
                 
                 
@@ -264,7 +264,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         if   revealViewController().loginType ==  0{
             self.loginType = .student
-            self.studentLevel = Int(revealViewController().studentLevel)
+            self.studentLevel = revealViewController().studentLevel
         }else{
             self.loginType = .instructor
         }
@@ -309,7 +309,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             if let dataFromServ = Response.result.value{
                 let responseINJson = JSON(dataFromServ)
                 
-                self.schedule = responseINJson["schedule"].arrayValue
+                self.schedule = responseINJson["data"].arrayValue
                 
                 for sub in self.schedule
                 {

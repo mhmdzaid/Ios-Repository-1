@@ -41,7 +41,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
             self.studentsUpdated = self.students
             self.tableView.delegate = self
             self.tableView.dataSource = self
-            self.tableView.reloadData()
+           // self.tableView.reloadData()
         }
         
       
@@ -124,7 +124,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location").responseJSON { (Response) in
             if let result = Response.result.value{
             let array = JSON(result)
-            let all_Students = array["students_in_Location"].arrayValue
+            let all_Students = array["data"].arrayValue
               for student in all_Students
               {
                 if !self.students.contains(student["name"].stringValue)

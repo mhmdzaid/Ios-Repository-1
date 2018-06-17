@@ -57,7 +57,7 @@ class StudentCell : UITableViewCell {
             let headers  =  ["content-type" : "application/json"]
             let url = "http://syntax-eg.esy.es/api/students_in_Location/"+String(self.id)
             Alamofire.request(url, method: .delete, parameters: nil, encoding:JSONEncoding.default, headers: headers).responseJSON(completionHandler: { (response) in
-                
+               
             })
         }
         

@@ -46,7 +46,30 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        switch indexPath.row {
+        case 1:
+            break
+        case 2:
+            break
+        case 3:
+            break
+        case 4:
+            break
+        case 5:
+            UserDefaults.standard.setValue(false, forKey: "isSignedIn")
+            UserDefaults.standard.removeObject(forKey: "stdLevel")
+            UserDefaults.standard.removeObject(forKey: "stdName")
+            UserDefaults.standard.removeObject(forKey: "stdID")
+            UserDefaults.standard.removeObject(forKey: "instID")
+            UserDefaults.standard.removeObject(forKey: "instName")
+
+
+
+
+            break
+        default: break
+            
+        }
     }
 
 

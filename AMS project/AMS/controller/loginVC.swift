@@ -26,6 +26,9 @@ class loginVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
     
+    let defaults = UserDefaults.standard
+    
+   
     
    
     @IBAction func loginPressed(_ sender: Any) {
@@ -37,6 +40,7 @@ class loginVC: UIViewController {
         if loginType == .student
         {
            
+            
             Alamofire.request("http://syntax-eg.esy.es/api/students").responseJSON { (Response) in
             if  let response = Response.result.value{
               
@@ -54,7 +58,7 @@ class loginVC: UIViewController {
                    let password = self.password.text
                     print(student!)
                     print(password!)
-                    let all = students["student"].arrayValue
+                    let all = students["data"].arrayValue
                     
                     for std in all
                     {
@@ -85,6 +89,13 @@ class loginVC: UIViewController {
                                     }))
                                     self.present(alert, animated: true, completion: nil)
                                 }else{
+                                
+                                   self.defaults.setValue(true, forKey: "isSignedIn")
+                                   self.defaults.setValue(self.studentLevel, forKey: "stdLevel")
+                                   self.defaults.setValue(std["username"].stringValue, forKey: "stdName")
+                                   self.defaults.setValue(self.student_id, forKey: "stdID")
+                                   // print("set key for login ''''''''''''''''' \(UserDefaults.standard.bool(forKey: "isSignedIn"))")
+                                   
                                     Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location", method: .post, parameters: paramsForPost, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                         
                                     })
@@ -133,7 +144,7 @@ class loginVC: UIViewController {
                         
                         let instructor = self.username.text
                         let password = self.password.text
-                        let all = instructors["instructor"].arrayValue
+                        let all = instructors["data"].arrayValue
                         for inst in all
                         {
                             if inst["username"].stringValue == instructor
@@ -162,7 +173,9 @@ class loginVC: UIViewController {
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     }else{
-                                        
+                                       self.defaults.setValue(true, forKey: "isSignedIn")
+                                        self.defaults.setValue(inst["username"].stringValue, forKey: "instName")
+                                        self.defaults.setValue(self.instructor_id, forKey:"instID")
                                         self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                         
                                     }
@@ -219,7 +232,6 @@ class loginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         logo.layer.cornerRadius = 90
         logo.clipsToBounds = true
         logo.layer.borderColor = UIColor.white.cgColor
@@ -229,6 +241,7 @@ class loginVC: UIViewController {
         print(self.loginType)
     }
 
+  
     func checkLocation()->Bool{
         var ssid: String?
         if let interfaces = CNCopySupportedInterfaces() as NSArray? {

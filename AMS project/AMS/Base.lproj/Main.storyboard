@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4o5-Wz-1qH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xrl-Qf-eEM">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="loginVC" customModule="AMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="loginVC" customModule="AMS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1386,7 +1386,7 @@ Thanks you .
         <!--Reveal View Controller-->
         <scene sceneID="Ml9-EF-Qrv">
             <objects>
-                <viewController id="tq1-Yt-DOe" customClass="SWRevealViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="swRevealVC" id="tq1-Yt-DOe" customClass="SWRevealViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rVm-JU-r3V">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1439,7 +1439,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="37" y="13" width="186" height="185"/>
+                                                <rect key="frame" x="34" y="17" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1542,7 +1542,7 @@ Thanks you .
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IkI-kt-BEJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.375" y="62.323943661971832"/>
+            <point key="canvasLocation" x="651" y="62"/>
         </scene>
     </scenes>
     <resources>
@@ -1570,7 +1570,7 @@ Thanks you .
         <image name="whiteStudent" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Ls-gc-6uT"/>
+        <segue reference="74C-R3-XwR"/>
         <segue reference="zhu-RU-4jb"/>
     </inferredMetricsTieBreakers>
 </document>

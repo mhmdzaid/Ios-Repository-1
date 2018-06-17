@@ -9,7 +9,7 @@ class StartVC: UIViewController {
     @IBAction func loginAsProf(_ sender: Any) {
      
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! loginVC
         if segue.identifier == "loginAsProfessor"{
@@ -19,6 +19,7 @@ class StartVC: UIViewController {
         else{
            destinationVC.loginType = .student
         }
+        
     }
     //actions
     @IBAction func loginAsStudent(_ sender: Any) {
@@ -27,6 +28,7 @@ class StartVC: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         logo.layer.cornerRadius = 90
         logo.clipsToBounds = true
         logo.layer.borderColor = UIColor.white.cgColor
@@ -34,6 +36,16 @@ class StartVC: UIViewController {
         CreateAccountBtn.layer.cornerRadius = 32
         CreateAccountBtn.clipsToBounds = true
   }
-
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+       
+        if  UserDefaults.standard.bool(forKey: "isSignedIn") {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let  swRevealVC = storyBoard.instantiateViewController(withIdentifier:"swRevealVC") as! SWRevealViewController
+            self.present(swRevealVC, animated: true, completion: nil)
+        }
+    }
 
 }
