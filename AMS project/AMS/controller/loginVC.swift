@@ -77,13 +77,13 @@ class loginVC: UIViewController {
                             
                             Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                 let response = JSON(Response.result.value!)
-                                let status = response["studentLogin"].stringValue
+                                let status = response["data"].stringValue
                                 print("===============>>>\(status)")
                                 if status == "you don't have an account" {
                                     let alert =  UIAlertController(title: "LOGIN ERROR ", message: "wrong password ", preferredStyle: UIAlertControllerStyle.alert)
                                     alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
                                         alert.dismiss(animated: true, completion: nil)
-                                        self.username.text = ""
+                                        
                                         self.password.text = ""
                                         self.found = false
                                     }))
@@ -99,10 +99,10 @@ class loginVC: UIViewController {
                                     Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location", method: .post, parameters: paramsForPost, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                         
                                     })
-                                    print("leve of the student XXXXXXXXXXXXXXXXXXX \(self.studentLevel)")
+                                   
                                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                 }
-                                //print("-----------------------------------\(String(describing: Response.result.value))")
+                                
                             })
                            break
                         }
@@ -161,13 +161,13 @@ class loginVC: UIViewController {
                                 
                                 Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (Response) in
                                     let response = JSON(Response.result.value!)
-                                    let status = response["status"].stringValue
-                                    
+                                    let status = response["data"].stringValue
+                                    print("here is the status \(status )")
                                     if status == "you don't have an account" {
                                         let alert =  UIAlertController(title: "LOGIN ERROR ", message: "wrong password", preferredStyle: UIAlertControllerStyle.alert)
                                         alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
                                             alert.dismiss(animated: true, completion: nil)
-                                            self.username.text = ""
+                                         
                                             self.password.text = ""
                                             self.found = false
                                         }))

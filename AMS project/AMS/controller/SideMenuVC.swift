@@ -10,6 +10,8 @@ import UIKit
 
 class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     //vars
+    var loginType : loginType!
+    
     var options = [ "Home","Notifications","Schedule","Current Attendance","About us " , "Logout" ]
     var optionImage = [#imageLiteral(resourceName: "home"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "calendar"),#imageLiteral(resourceName: "clipboards (1)"),#imageLiteral(resourceName: "info"),#imageLiteral(resourceName: "logout")]
     //Iboutlets
@@ -47,11 +49,16 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
+        case 0 :
+            break
         case 1:
             break
         case 2:
             break
         case 3:
+            if loginType != .student{
+                self.performSegue(withIdentifier: "manualAttend", sender: nil)
+            }
             break
         case 4:
             break
@@ -62,11 +69,12 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             UserDefaults.standard.removeObject(forKey: "stdID")
             UserDefaults.standard.removeObject(forKey: "instID")
             UserDefaults.standard.removeObject(forKey: "instName")
-
-
-
-
-            break
+         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+         let startVC = storyBoard.instantiateViewController(withIdentifier: "startVC")
+            
+         self.present(startVC, animated: true, completion: nil)
+         
+        break
         default: break
             
         }

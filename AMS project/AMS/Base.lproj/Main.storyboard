@@ -1313,6 +1313,7 @@ Thanks you .
                     <connections>
                         <outlet property="profileImage" destination="1oG-YK-vSB" id="MmN-yf-ymk"/>
                         <outlet property="tableView" destination="f4S-OG-rhU" id="5q7-ag-MRR"/>
+                        <segue destination="4o5-Wz-1qH" kind="show" identifier="manualAttend" id="IA4-xI-3wB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X4f-Sq-hDP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1424,7 +1425,7 @@ Thanks you .
         <!--StartVC-->
         <scene sceneID="bBn-6Z-7cF">
             <objects>
-                <viewController id="xrl-Qf-eEM" customClass="StartVC" customModule="AMS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="startVC" id="xrl-Qf-eEM" customClass="StartVC" customModule="AMS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t0g-x8-5ZY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1439,7 +1440,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="34" y="17" width="186" height="185"/>
+                                                <rect key="frame" x="35" y="17" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1571,6 +1572,7 @@ Thanks you .
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="74C-R3-XwR"/>
+        <segue reference="IA4-xI-3wB"/>
         <segue reference="zhu-RU-4jb"/>
     </inferredMetricsTieBreakers>
 </document>
