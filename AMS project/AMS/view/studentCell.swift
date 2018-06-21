@@ -23,10 +23,30 @@ class StudentCell : UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var studentSwitch: UISwitch!
     @IBOutlet weak var studentImage: UIImageView!
+    @IBAction func switchPressed(_ sender: Any) {
+        let tableView = self.superview as! UITableView
+        let row = tableView.indexPath(for: self)?.row
+        let manualVC = self.parentViewController as! ManualAttendanceVC
+        print(manualVC.levels[row!])
+        let url = URL(string:"http://syntax-eg.esy.es/api/students_in_Location" )
+        let header = ["content-type" : "application/json"]
+        var params : [String : Any] = ["status":"1"]
+        if studentSwitch.isOn{
+            
+            Alamofire.request(url!, method: .put, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (response) in})
+        }else{
+           
+            params ["status"] = "0"
+            Alamofire.request(url!, method: .put, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (response) in})
+        }
+    }
+    
+    
+    
     
     @IBAction func pausePressed(_ sender: Any) {
        
-        print("_____________\(self.studentName.text)__________")
+        
         self.delegate?.pauseButtonPressed(cellResume: vieww)
         timer  = Timer.scheduledTimer(timeInterval: 1 , target: self, selector: #selector(startTime), userInfo: nil, repeats: true)
         timer.fire()
@@ -68,6 +88,19 @@ class StudentCell : UITableViewCell {
 protocol StudentCellDelegate {
     func pauseButtonPressed(cellResume:UIView)
     func resumeButtonPressed(cellResume:UIView)
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            parentResponder = parentResponder!.next
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
 }
 
 //

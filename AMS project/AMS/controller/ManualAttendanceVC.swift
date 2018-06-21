@@ -19,7 +19,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         cellResume.isHidden = true
     }
    
-    
+    var levels : [String]! = []
     var students_ids : [Int]! = []
     var students : [String]! = []{
         didSet{
@@ -88,9 +88,11 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
      cell.studentName.text = studentsUpdated![indexPath.row]
      cell.studentImage.layer.cornerRadius = 35
      cell.layer.borderWidth = 1
+     cell.studentImage.clipsToBounds = true
      cell.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
      cell.id = students_ids[indexPath.row]
      
+       
     return cell
     }
     
@@ -129,6 +131,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
               {
                 if !self.students.contains(student["name"].stringValue)
                 {
+                    self.levels.append(student["level"].stringValue)
                     self.students.append(student["name"].stringValue)
                     self.students_ids.append(student["id"].intValue)
                 }

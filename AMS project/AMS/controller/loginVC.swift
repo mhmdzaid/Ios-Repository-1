@@ -36,7 +36,7 @@ class loginVC: UIViewController {
         
             
         let ScheduleVC = storyboard?.instantiateViewController(withIdentifier: "scheduleVC")as! scheduleVC
-
+         
         if loginType == .student
         {
            
@@ -70,7 +70,7 @@ class loginVC: UIViewController {
                             ScheduleVC.loginType = .student
                             let url = "http://syntax-eg.esy.es/api/studentLogin"
                             self.studentLevel = std["level"].stringValue
-                          
+                            self.defaults.set(self.studentLevel, forKey: "studentLevel")
                             let params : [String : String] = ["username":"\(std["username"].stringValue)","password":"\(password!)"]
                              let header = ["content-type" : "application/json"]
                             let paramsForPost = ["id":"\(std["id"].intValue)","name":"\(std["name"].stringValue)"]
@@ -238,6 +238,7 @@ class loginVC: UIViewController {
         logo.layer.borderWidth = 2.3
         loginBtn.layer.cornerRadius = 32
         loginBtn.clipsToBounds = true
+        self.defaults.set(self.loginType?.rawValue, forKey: "loginType")
         print(self.loginType)
     }
 
@@ -261,9 +262,9 @@ class loginVC: UIViewController {
         else{return false}
     }
 }
-enum loginType {
+enum loginType : Int {
     
-    case student
-    case instructor
+    case student = 0
+    case instructor = 1
 }
 

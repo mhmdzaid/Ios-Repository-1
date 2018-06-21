@@ -10,8 +10,8 @@ import UIKit
 
 class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     //vars
-    var loginType : loginType!
-    
+    var loginType   = UserDefaults.standard.integer(forKey: "loginType")
+    var studentLevel = UserDefaults.standard.string(forKey: "studentLevel")
     var options = [ "Home","Notifications","Schedule","Current Attendance","About us " , "Logout" ]
     var optionImage = [#imageLiteral(resourceName: "home"),#imageLiteral(resourceName: "notification"),#imageLiteral(resourceName: "calendar"),#imageLiteral(resourceName: "clipboards (1)"),#imageLiteral(resourceName: "info"),#imageLiteral(resourceName: "logout")]
     //Iboutlets
@@ -20,6 +20,7 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
   
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("the student Level = \(studentLevel) ,,,,, login type = \(loginType)")
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
             profileImage.layer.cornerRadius = 70
             profileImage.clipsToBounds = true
@@ -56,7 +57,7 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
         case 2:
             break
         case 3:
-            if loginType != .student{
+           if loginType != 0{
                 self.performSegue(withIdentifier: "manualAttend", sender: nil)
             }
             break
