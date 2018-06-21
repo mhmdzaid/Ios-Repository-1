@@ -17,7 +17,7 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     //Iboutlets
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-  
+    @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         print("the student Level = \(studentLevel) ,,,,, login type = \(loginType)")
@@ -28,6 +28,11 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             profileImage.layer.borderColor = UIColor.white.cgColor
             tableView.delegate = self
             tableView.dataSource = self
+        if loginType == 0{
+            self.userName.text = UserDefaults.standard.string(forKey: "stdName")
+        }else{
+            self.userName.text = UserDefaults.standard.string(forKey: "instName")
+        }
         
     }
     func numberOfSections(in tableView: UITableView) -> Int {
