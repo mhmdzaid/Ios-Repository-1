@@ -28,11 +28,11 @@ class StudentCell : UITableViewCell {
         let row = tableView.indexPath(for: self)?.row
         let manualVC = self.parentViewController as! ManualAttendanceVC
         print(manualVC.levels[row!])
-        let url = URL(string:"http://syntax-eg.esy.es/api/students_in_Location" )
-        let header = ["content-type" : "application/json"]
+        let url = URL(string:"http://syntax-eg.esy.es/api/students_in_Location/\(self.id)" )
+        let header  = ["content-type" : "application/json"]
         var params : [String : Any] = ["status":"1"]
         if studentSwitch.isOn{
-            
+          
             Alamofire.request(url!, method: .put, parameters: params, encoding: JSONEncoding.default, headers: header).responseJSON(completionHandler: { (response) in})
         }else{
            

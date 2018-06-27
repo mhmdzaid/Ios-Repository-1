@@ -20,7 +20,6 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var userName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("the student Level = \(studentLevel) ,,,,, login type = \(loginType)")
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
             profileImage.layer.cornerRadius = 70
             profileImage.clipsToBounds = true

@@ -201,16 +201,15 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTv-B2-Tw8">
                                                             <rect key="frame" x="8" y="15" width="91" height="84"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sss" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-W0-t0h">
-                                                                    <rect key="frame" x="8" y="8" width="360" height="240"/>
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sss" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-W0-t0h">
+                                                                    <rect key="frame" x="6" y="4" width="80" height="80"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="84" id="5jZ-oV-NWD"/>
-                                                                <constraint firstItem="T1T-W0-t0h" firstAttribute="top" secondItem="eTv-B2-Tw8" secondAttribute="topMargin" id="9HQ-jz-0MJ"/>
                                                                 <constraint firstAttribute="width" constant="91" id="GeB-B5-h1Q"/>
-                                                                <constraint firstItem="T1T-W0-t0h" firstAttribute="leading" secondItem="eTv-B2-Tw8" secondAttribute="leadingMargin" id="mR6-Or-O9L"/>
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="KaK-Sm-R0k">
@@ -1444,7 +1443,7 @@ Thanks you .
                                         <rect key="frame" x="0.0" y="0.0" width="249" height="219"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="35Y-bY-9Ck">
-                                                <rect key="frame" x="36" y="17" width="186" height="185"/>
+                                                <rect key="frame" x="37" y="17" width="186" height="185"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.3192971671" green="0.54832356360000001" blue="0.60032898189999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </imageView>
@@ -1577,7 +1576,7 @@ Thanks you .
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6Ls-gc-6uT"/>
-        <segue reference="IA4-xI-3wB"/>
+        <segue reference="cLO-fi-10G"/>
         <segue reference="zhu-RU-4jb"/>
     </inferredMetricsTieBreakers>
 </document>
