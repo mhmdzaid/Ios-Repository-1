@@ -71,9 +71,11 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             let SCHEDuleVC = TabBarVC.viewControllers![1] as! scheduleVC
             TabBarVC.selectedViewController = SCHEDuleVC
             SCHEDuleVC.instructorView.isHidden = false
-            Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location/groupNumber/\(self.groupNumber)").responseJSON(completionHandler: { (response) in
-                let Response =  JSON(response.result.value!)
-                let students = Response["data"].arrayValue
+            Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location/groupNumber/\(self.groupNumber!)").responseJSON(completionHandler: { (response) in
+                print("here is the groupNumber = \(self.groupNumber!)")
+                let Response =  response.result.value
+                let allData = JSON(Response)
+                let students = allData["data"].arrayValue
                  SCHEDuleVC.studentNumber.text = String(students.count)
             })
            
@@ -86,8 +88,6 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             UserDefaults.standard.removeObject(forKey: "stdLevel")
             UserDefaults.standard.removeObject(forKey: "stdName")
             UserDefaults.standard.removeObject(forKey: "stdID")
-            UserDefaults.standard.removeObject(forKey: "instID")
-            UserDefaults.standard.removeObject(forKey: "instName")
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             let startVC = storyBoard.instantiateViewController(withIdentifier: "startVC")
             
@@ -96,11 +96,9 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             break
         case 5:
             UserDefaults.standard.setValue(false, forKey: "isSignedIn")
-            UserDefaults.standard.removeObject(forKey: "stdLevel")
-            UserDefaults.standard.removeObject(forKey: "stdName")
-            UserDefaults.standard.removeObject(forKey: "stdID")
             UserDefaults.standard.removeObject(forKey: "instID")
             UserDefaults.standard.removeObject(forKey: "instName")
+            UserDefaults.standard.removeObject(forKey: "role")
          let storyBoard = UIStoryboard(name: "Main", bundle: nil)
          let startVC = storyBoard.instantiateViewController(withIdentifier: "startVC")
             

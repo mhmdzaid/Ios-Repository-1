@@ -147,6 +147,7 @@ class loginVC: UIViewController {
                         let all = instructors["data"].arrayValue
                         for inst in all
                         {
+                           
                             if inst["username"].stringValue == instructor
                             {
                                 self.found = true
@@ -177,7 +178,7 @@ class loginVC: UIViewController {
                                        self.defaults.setValue(true, forKey: "isSignedIn")
                                         self.defaults.setValue(inst["username"].stringValue, forKey: "instName")
                                         self.defaults.setValue(self.instructor_id, forKey:"instID")
-                                        self.defaults.setValue(inst["role"], forKey: "role")
+                                        self.defaults.setValue( inst["role"].stringValue, forKey: "role")
                                         self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                         
                                     }
