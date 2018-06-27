@@ -7,9 +7,11 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
 class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     //vars
+    var groupNumber = UserDefaults.standard.string(forKey: "role")
     var loginType   = UserDefaults.standard.integer(forKey: "loginType")
     var studentLevel = UserDefaults.standard.string(forKey: "studentLevel")
     var options = [ "Home","Notifications","Schedule","Current Attendance","About us " , "Logout" ]
@@ -25,20 +27,22 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             profileImage.clipsToBounds = true
             profileImage.layer.borderWidth = 3
             profileImage.layer.borderColor = UIColor.white.cgColor
-            tableView.delegate = self
-            tableView.dataSource = self
+        
         if loginType == 0{
+            options = [ "Home","Notifications","Schedule","About us " , "Logout" ]
+            
             self.userName.text = UserDefaults.standard.string(forKey: "stdName")
         }else{
             self.userName.text = UserDefaults.standard.string(forKey: "instName")
         }
-        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return options.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -62,10 +66,33 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             break
         case 3:
            if loginType != 0{
-                self.performSegue(withIdentifier: "manualAttend", sender: nil)
-            }
+            self.revealViewController().revealToggle(self)
+            let TabBarVC = self.revealViewController().frontViewController as! UITabBarController
+            let SCHEDuleVC = TabBarVC.viewControllers![1] as! scheduleVC
+            TabBarVC.selectedViewController = SCHEDuleVC
+            SCHEDuleVC.instructorView.isHidden = false
+            Alamofire.request("http://syntax-eg.esy.es/api/students_in_Location/groupNumber/\(self.groupNumber)").responseJSON(completionHandler: { (response) in
+                let Response =  JSON(response.result.value!)
+                let students = Response["data"].arrayValue
+                 SCHEDuleVC.studentNumber.text = String(students.count)
+            })
+           
+            
+           }
             break
         case 4:
+            if loginType == 0{
+            UserDefaults.standard.setValue(false, forKey: "isSignedIn")
+            UserDefaults.standard.removeObject(forKey: "stdLevel")
+            UserDefaults.standard.removeObject(forKey: "stdName")
+            UserDefaults.standard.removeObject(forKey: "stdID")
+            UserDefaults.standard.removeObject(forKey: "instID")
+            UserDefaults.standard.removeObject(forKey: "instName")
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            let startVC = storyBoard.instantiateViewController(withIdentifier: "startVC")
+            
+            self.present(startVC, animated: true, completion: nil)
+            }
             break
         case 5:
             UserDefaults.standard.setValue(false, forKey: "isSignedIn")

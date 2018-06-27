@@ -327,7 +327,7 @@ Thanks you .
                                     <constraint firstAttribute="trailing" secondItem="vac-Am-RDU" secondAttribute="trailing" constant="28" id="oKd-bc-I9h"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.85999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iX-JD-XbA">
+                            <view hidden="YES" alpha="0.85999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iX-JD-XbA">
                                 <rect key="frame" x="18.5" y="36" width="283.5" height="496"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b8H-Ba-LCw">
@@ -837,6 +837,9 @@ Thanks you .
                                         <state key="normal" title="End session ">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="endSessionPressed:" destination="qgS-vy-Tki" eventType="touchUpInside" id="fN7-XF-pEd"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="subject" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ehg-8T-4f3">
                                         <rect key="frame" x="38" y="27" width="164" height="39"/>

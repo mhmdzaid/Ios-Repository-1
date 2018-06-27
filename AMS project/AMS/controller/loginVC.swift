@@ -173,9 +173,11 @@ class loginVC: UIViewController {
                                         }))
                                         self.present(alert, animated: true, completion: nil)
                                     }else{
+                                      
                                        self.defaults.setValue(true, forKey: "isSignedIn")
                                         self.defaults.setValue(inst["username"].stringValue, forKey: "instName")
                                         self.defaults.setValue(self.instructor_id, forKey:"instID")
+                                        self.defaults.setValue(inst["role"], forKey: "role")
                                         self.performSegue(withIdentifier: "loginSegue", sender: nil)
                                         
                                     }

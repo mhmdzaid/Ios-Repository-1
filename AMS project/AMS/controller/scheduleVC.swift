@@ -96,7 +96,10 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     @IBOutlet weak var c3: UIImageView!
     @IBOutlet weak var c4: UIImageView!
 
-
+    @IBAction func endSessionPressed(_ sender: Any) {
+        self.instructorView.isHidden = true
+    }
+    
     @IBAction func passwordOkpressed(_ sender: Any) {
         passwordView.isHidden = true
     }
