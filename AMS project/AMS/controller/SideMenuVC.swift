@@ -78,8 +78,8 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
                 let students = allData["data"].arrayValue
                  SCHEDuleVC.studentNumber.text = String(students.count)
             })
-           
-            
+           }else{
+            self.performSegue(withIdentifier: "aboutUS", sender: nil)
            }
             break
         case 4:
@@ -92,6 +92,9 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             let startVC = storyBoard.instantiateViewController(withIdentifier: "startVC")
             
             self.present(startVC, animated: true, completion: nil)
+            }
+            else{
+                self.performSegue(withIdentifier: "aboutUS", sender: nil)
             }
             break
         case 5:

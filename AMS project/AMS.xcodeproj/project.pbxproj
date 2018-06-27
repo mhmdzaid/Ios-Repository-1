@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161A4A4820E4384D00451CC2 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A4A4720E4384D00451CC2 /* AboutUsVC.swift */; };
+		161A4A4A20E449D000451CC2 /* Monotype Corsiva.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 161A4A4920E449CF00451CC2 /* Monotype Corsiva.ttf */; };
 		165ED0F22047C765005A2757 /* scheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ED0F12047C765005A2757 /* scheduleVC.swift */; };
 		165ED114204835BB005A2757 /* scheduleCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */; };
 		166C17B52046336300D05D40 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C17B42046336300D05D40 /* StartVC.swift */; };
@@ -28,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161A4A4720E4384D00451CC2 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
+		161A4A4920E449CF00451CC2 /* Monotype Corsiva.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monotype Corsiva.ttf"; sourceTree = "<group>"; };
 		165ED0F12047C765005A2757 /* scheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleVC.swift; sourceTree = "<group>"; };
 		165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleCellTableViewCell.swift; sourceTree = "<group>"; };
 		166C17B42046336300D05D40 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 				1685628A206404FA003A4C2B /* NotificationVC.swift */,
 				1685628C2064051B003A4C2B /* HomeVC.swift */,
 				1685628E20640558003A4C2B /* SideMenuVC.swift */,
+				161A4A4720E4384D00451CC2 /* AboutUsVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 		1674673620443C380086C52E /* AMS */ = {
 			isa = PBXGroup;
 			children = (
+				161A4A4920E449CF00451CC2 /* Monotype Corsiva.ttf */,
 				165ED0F02047C6D3005A2757 /* model */,
 				165ED0EF2047C6C6005A2757 /* view */,
 				165ED0EE2047C69E005A2757 /* controller */,
@@ -219,6 +225,7 @@
 			files = (
 				1674674220443C380086C52E /* LaunchScreen.storyboard in Resources */,
 				1674673F20443C380086C52E /* Assets.xcassets in Resources */,
+				161A4A4A20E449D000451CC2 /* Monotype Corsiva.ttf in Resources */,
 				1674673D20443C380086C52E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,6 +297,7 @@
 				1674673A20443C380086C52E /* loginVC.swift in Sources */,
 				1685629120646D01003A4C2B /* OptionCell.swift in Sources */,
 				165ED0F22047C765005A2757 /* scheduleVC.swift in Sources */,
+				161A4A4820E4384D00451CC2 /* AboutUsVC.swift in Sources */,
 				1672A404205EF07E00995BBD /* studentCell.swift in Sources */,
 				16BCE6F2206327200046019E /* DLRadioButton.m in Sources */,
 				1672A402205EEEF300995BBD /* ManualAttendanceVC.swift in Sources */,
