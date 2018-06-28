@@ -10,6 +10,9 @@ import UIKit
 
 class AboutUsVC: UIViewController {
 
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

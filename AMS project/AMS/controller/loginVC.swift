@@ -29,6 +29,9 @@ class loginVC: UIViewController {
     let defaults = UserDefaults.standard
     
    
+    @IBAction func backBtnPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
    
     @IBAction func loginPressed(_ sender: Any) {
