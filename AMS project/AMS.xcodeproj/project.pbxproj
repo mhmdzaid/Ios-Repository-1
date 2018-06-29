@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		161A4A4820E4384D00451CC2 /* AboutUsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A4A4720E4384D00451CC2 /* AboutUsVC.swift */; };
 		161A4A4A20E449D000451CC2 /* Monotype Corsiva.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 161A4A4920E449CF00451CC2 /* Monotype Corsiva.ttf */; };
+		161A4A4C20E6D96B00451CC2 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161A4A4B20E6D96B00451CC2 /* NotificationCell.swift */; };
 		165ED0F22047C765005A2757 /* scheduleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ED0F12047C765005A2757 /* scheduleVC.swift */; };
 		165ED114204835BB005A2757 /* scheduleCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */; };
 		166C17B52046336300D05D40 /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 166C17B42046336300D05D40 /* StartVC.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		161A4A4720E4384D00451CC2 /* AboutUsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsVC.swift; sourceTree = "<group>"; };
 		161A4A4920E449CF00451CC2 /* Monotype Corsiva.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Monotype Corsiva.ttf"; sourceTree = "<group>"; };
+		161A4A4B20E6D96B00451CC2 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		165ED0F12047C765005A2757 /* scheduleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleVC.swift; sourceTree = "<group>"; };
 		165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scheduleCellTableViewCell.swift; sourceTree = "<group>"; };
 		166C17B42046336300D05D40 /* StartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				165ED113204835BB005A2757 /* scheduleCellTableViewCell.swift */,
 				1672A403205EF07E00995BBD /* studentCell.swift */,
 				1685629020646D01003A4C2B /* OptionCell.swift */,
+				161A4A4B20E6D96B00451CC2 /* NotificationCell.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				1672A404205EF07E00995BBD /* studentCell.swift in Sources */,
 				16BCE6F2206327200046019E /* DLRadioButton.m in Sources */,
 				1672A402205EEEF300995BBD /* ManualAttendanceVC.swift in Sources */,
+				161A4A4C20E6D96B00451CC2 /* NotificationCell.swift in Sources */,
 				1674673820443C380086C52E /* AppDelegate.swift in Sources */,
 				1685628F20640558003A4C2B /* SideMenuVC.swift in Sources */,
 				1685628920640104003A4C2B /* SWRevealViewController.m in Sources */,
