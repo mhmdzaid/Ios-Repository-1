@@ -42,7 +42,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
         }
     }
-    var sideMenuVisible = false
+    public static var sideMenuVisible = false
     var choice = ""
     var schedule : [JSON]!
     var subject : [String :[ExpandableNames]]! = ["Saturday":[],"Sunday":[],"Monday":[],"Tuesday":[],"Wednesday":[],"Thursday":[]]
@@ -112,13 +112,13 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
     }
     @IBAction func menuBtnSelected(_ sender: Any) {
-        if sideMenuVisible == true{
-            sideMenuVisible = false
+        if scheduleVC.sideMenuVisible == true{
+            scheduleVC.sideMenuVisible = false
             self.view.alpha = 1
         }
         else{
-            sideMenuVisible = true
-            self.view.alpha = 0.85
+            scheduleVC.sideMenuVisible = true
+            self.view.alpha = 0.9
         }
     }
     // getting questions from the server
@@ -256,7 +256,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        scheduleVC.sideMenuVisible = false
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
          self.fetchQuestions()
@@ -271,7 +273,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }else{
             self.loginType = .instructor
         }
-        print("-----------------------\(loginType)--------------\(studentLevel)-----------")
+        
         
     }
     
@@ -281,7 +283,7 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
-            print("^^^^^^^^^^^^^^^^^^^^^^^^^\(self.subject["Wednesday"]?.count)^^^^^^^^^^^^^^^^")
+            
         }
         profImageInfo.layer.cornerRadius = 25
         profImageInfo.clipsToBounds = true

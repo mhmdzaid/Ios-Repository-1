@@ -9,7 +9,7 @@
 import UIKit
 
 class NotificationVC: UIViewController {
-    var sideMenuVisible = false
+    public static var sideMenuVisible = false
     @IBOutlet weak var menuBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,12 +18,12 @@ class NotificationVC: UIViewController {
     }
     
     @IBAction func menuBtnPressed(_ sender: Any) {
-        if sideMenuVisible == true{
-            sideMenuVisible = false
+        if NotificationVC.sideMenuVisible == true{
+            NotificationVC.sideMenuVisible = false
             self.view.alpha = 1
         }
         else{
-            sideMenuVisible = true
+            NotificationVC.sideMenuVisible = true
             self.view.alpha = 0.85
         }
     }

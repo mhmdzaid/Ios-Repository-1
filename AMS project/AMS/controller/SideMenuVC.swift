@@ -20,6 +20,11 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationVC.sideMenuVisible = true
+        HomeVC.sideMenuVisible = true
+        scheduleVC.sideMenuVisible = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 70
