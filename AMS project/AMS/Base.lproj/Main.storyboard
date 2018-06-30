@@ -142,6 +142,7 @@
                         <outlet property="loginBtn" destination="bDw-GC-14z" id="bF5-2y-VGi"/>
                         <outlet property="logo" destination="FcU-vK-WbY" id="wW5-fv-CXX"/>
                         <outlet property="password" destination="5KR-av-Jwe" id="2TJ-5A-oP5"/>
+                        <outlet property="stackConstraint" destination="E67-eI-7Gw" id="WNJ-YN-Jeg"/>
                         <outlet property="username" destination="Pk9-GH-IDm" id="byn-vH-lYD"/>
                         <segue destination="tq1-Yt-DOe" kind="show" identifier="loginSegue" id="74C-R3-XwR"/>
                     </connections>
@@ -190,14 +191,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="BNf-AX-UaF">
                                 <rect key="frame" x="100" y="562" width="214" height="24.666666666666629"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Made by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qk-gv-Dtf">
-                                        <rect key="frame" x="0.0" y="0.0" width="86" height="24.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Made by" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Qk-gv-Dtf">
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="24.666666666666668"/>
                                         <fontDescription key="fontDescription" name="MonotypeCorsiva" family="Monotype Corsiva" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="FCI Dream Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF8-Rf-6oQ">
-                                        <rect key="frame" x="96" y="0.0" width="118" height="24.666666666666668"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FCI Dream Team" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gF8-Rf-6oQ">
+                                        <rect key="frame" x="78" y="0.0" width="136" height="24.666666666666668"/>
                                         <fontDescription key="fontDescription" name="MonotypeCorsiva" family="Monotype Corsiva" pointSize="22"/>
                                         <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1568,8 +1569,34 @@ Thanks you .
                                     <constraint firstItem="H2q-MP-JSd" firstAttribute="centerY" secondItem="VZr-5q-PBs" secondAttribute="centerY" id="nF1-aH-fm0"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEZ-5M-hnt">
+                                <rect key="frame" x="142" y="533" width="130" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="pa2-30-N5z"/>
+                                    <constraint firstAttribute="width" constant="130" id="tH1-sA-8jq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="-60" minY="0.0" maxX="0.0" maxY="-33"/>
+                                <inset key="imageEdgeInsets" minX="26" minY="8" maxX="0.0" maxY="70"/>
+                                <state key="normal" title="Schedule" image="calendar">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="schedulePressed:" destination="AXj-vs-WaH" eventType="touchUpInside" id="1UA-2K-Bcn"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gm-tR-Szn">
+                                <rect key="frame" x="85" y="118" width="244" height="67"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="IQk-CU-cbG"/>
+                                    <constraint firstAttribute="height" constant="67" id="qoo-dZ-wsa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="MonotypeCorsiva" family="Monotype Corsiva" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="2BG-qk-vbL">
-                                <rect key="frame" x="60" y="218" width="295" height="300"/>
+                                <rect key="frame" x="60" y="193" width="295" height="300"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="v1D-N9-YGy">
                                         <rect key="frame" x="0.0" y="0.0" width="295" height="130"/>
@@ -1599,7 +1626,7 @@ Attendance</string>
                                                     <constraint firstAttribute="width" constant="130" id="VhL-wF-BMn"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="-33"/>
+                                                <inset key="titleEdgeInsets" minX="-60" minY="0.0" maxX="0.0" maxY="-33"/>
                                                 <inset key="imageEdgeInsets" minX="30" minY="8" maxX="0.0" maxY="70"/>
                                                 <state key="normal" title="About Us" image="info">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1620,7 +1647,7 @@ Attendance</string>
                                                     <constraint firstAttribute="height" constant="130" id="YQk-j9-jsP"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                                <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="-33"/>
+                                                <inset key="titleEdgeInsets" minX="-60" minY="0.0" maxX="0.0" maxY="-33"/>
                                                 <inset key="imageEdgeInsets" minX="30" minY="8" maxX="0.0" maxY="70"/>
                                                 <state key="normal" title="Notifications" image="notification">
                                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1653,32 +1680,6 @@ Attendance</string>
                                     <constraint firstAttribute="width" constant="295" id="tcl-WK-8qP"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEZ-5M-hnt">
-                                <rect key="frame" x="142" y="541" width="130" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="pa2-30-N5z"/>
-                                    <constraint firstAttribute="width" constant="130" id="tH1-sA-8jq"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                                <inset key="titleEdgeInsets" minX="-50" minY="0.0" maxX="0.0" maxY="-33"/>
-                                <inset key="imageEdgeInsets" minX="31.5" minY="8" maxX="0.0" maxY="70"/>
-                                <state key="normal" title="Schedule" image="calendar">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="schedulePressed:" destination="AXj-vs-WaH" eventType="touchUpInside" id="1UA-2K-Bcn"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3gm-tR-Szn">
-                                <rect key="frame" x="85" y="118" width="244" height="67"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="IQk-CU-cbG"/>
-                                    <constraint firstAttribute="height" constant="67" id="qoo-dZ-wsa"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="MonotypeCorsiva" family="Monotype Corsiva" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1686,10 +1687,10 @@ Attendance</string>
                             <constraint firstItem="3gm-tR-Szn" firstAttribute="centerX" secondItem="Ucc-a8-jhp" secondAttribute="centerX" id="KU1-55-uoZ"/>
                             <constraint firstItem="2BG-qk-vbL" firstAttribute="centerX" secondItem="Ucc-a8-jhp" secondAttribute="centerX" id="Kwe-0t-G2Q"/>
                             <constraint firstItem="gx3-nt-6T7" firstAttribute="top" secondItem="Ucc-a8-jhp" secondAttribute="top" id="Nh6-te-Zgf"/>
-                            <constraint firstItem="2BG-qk-vbL" firstAttribute="centerY" secondItem="Ucc-a8-jhp" secondAttribute="centerY" id="Pdu-d0-YWn"/>
                             <constraint firstItem="zEZ-5M-hnt" firstAttribute="centerX" secondItem="Ucc-a8-jhp" secondAttribute="centerX" id="eAl-pz-9EZ"/>
-                            <constraint firstItem="5Ws-qo-hom" firstAttribute="bottom" secondItem="zEZ-5M-hnt" secondAttribute="bottom" constant="16" id="q3K-6A-eHA"/>
+                            <constraint firstItem="5Ws-qo-hom" firstAttribute="bottom" secondItem="zEZ-5M-hnt" secondAttribute="bottom" constant="24" id="q3K-6A-eHA"/>
                             <constraint firstItem="gx3-nt-6T7" firstAttribute="leading" secondItem="5Ws-qo-hom" secondAttribute="leading" id="srw-pw-1xT"/>
+                            <constraint firstItem="2BG-qk-vbL" firstAttribute="top" secondItem="3gm-tR-Szn" secondAttribute="bottom" constant="8" id="uJY-P2-Chv"/>
                             <constraint firstItem="gx3-nt-6T7" firstAttribute="trailing" secondItem="5Ws-qo-hom" secondAttribute="trailing" id="z6G-12-u90"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5Ws-qo-hom"/>
@@ -1902,7 +1903,7 @@ Attendance</string>
         <image name="whiteStudent" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6Ls-gc-6uT"/>
+        <segue reference="74C-R3-XwR"/>
         <segue reference="IA4-xI-3wB"/>
         <segue reference="zhu-RU-4jb"/>
     </inferredMetricsTieBreakers>

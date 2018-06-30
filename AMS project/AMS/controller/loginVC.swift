@@ -15,7 +15,7 @@ import SystemConfiguration.CaptiveNetwork
 
 
 
-class loginVC: UIViewController {
+class loginVC: UIViewController , UITextFieldDelegate {
    var found = false
     var loginType : loginType?
     var student_id = 0
@@ -25,9 +25,24 @@ class loginVC: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var stackConstraint: NSLayoutConstraint!
     
     let defaults = UserDefaults.standard
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.stackConstraint.constant = -80
+            self.view.layoutIfNeeded()
+        }
+        
+        
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.3) {
+            self.stackConstraint.constant = 21
+            self.view.layoutIfNeeded()
+        }
+        
+    }
    
     @IBAction func backBtnPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -238,6 +253,10 @@ class loginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action:#selector(viewTapped))
+        self.view.addGestureRecognizer(tapGesture)
+        self.username.delegate = self
+        self.password.delegate = self
         logo.layer.cornerRadius = 90
         logo.clipsToBounds = true
         logo.layer.borderColor = UIColor.white.cgColor
@@ -247,7 +266,11 @@ class loginVC: UIViewController {
         self.defaults.set(self.loginType?.rawValue, forKey: "loginType")
         print(self.loginType)
     }
-
+    
+    @objc func viewTapped(){
+       self.username.endEditing(true)
+       self.password.endEditing(true)
+    }
   
     func checkLocation()->Bool{
         var ssid: String?

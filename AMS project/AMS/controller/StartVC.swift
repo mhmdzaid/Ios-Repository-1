@@ -3,6 +3,7 @@ import UIKit
 
 class StartVC: UIViewController {
     //outlets
+ 
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var CreateAccountBtn: UIButton!
