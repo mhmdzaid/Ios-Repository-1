@@ -10,13 +10,13 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import SystemConfiguration.CaptiveNetwork
-
-
+import Reachability
 
 
 
 class loginVC: UIViewController , UITextFieldDelegate {
-   var found = false
+    var reachability : Reachability?
+    var found = false
     var loginType : loginType?
     var student_id = 0
     var instructor_id = 0
@@ -50,7 +50,8 @@ class loginVC: UIViewController , UITextFieldDelegate {
     
    
     @IBAction func loginPressed(_ sender: Any) {
-        if checkLocation() == true{
+        
+        if checkLocation() && isConnected(){
         
             
         let ScheduleVC = storyboard?.instantiateViewController(withIdentifier: "scheduleVC")as! scheduleVC
@@ -229,7 +230,7 @@ class loginVC: UIViewController , UITextFieldDelegate {
         }
         navigationController?.pushViewController(ScheduleVC, animated: true)
         }else{
-            let alert =  UIAlertController(title: "LOGIN ERROR ", message: " you are home or someWhere 😃 ", preferredStyle: UIAlertControllerStyle.alert)
+            let alert =  UIAlertController(title: "LOGIN ERROR ", message: " you are home or connected by mobile data 😃 ", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "ok", style: UIAlertActionStyle.destructive, handler: { (Action) in
                 alert.dismiss(animated: true, completion: nil)
                 self.username.text = ""
@@ -251,6 +252,19 @@ class loginVC: UIViewController , UITextFieldDelegate {
         }
     }
     
+    func isConnected()->Bool{
+        if ((self.reachability!.connection) == .wifi){
+            print("connected to wifi ")
+            return true
+        }
+        else {
+            print("you are not connected to wifi")
+            return false
+        }
+
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action:#selector(viewTapped))
@@ -265,6 +279,7 @@ class loginVC: UIViewController , UITextFieldDelegate {
         loginBtn.clipsToBounds = true
         self.defaults.set(self.loginType?.rawValue, forKey: "loginType")
         print(self.loginType)
+        self.reachability = Reachability.init()
     }
     
     @objc func viewTapped(){

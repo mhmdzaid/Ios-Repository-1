@@ -8,4 +8,5 @@ target 'AMS' do
   # Pods for AMS
     pod ‘SwiftyJSON’	    	
     pod 'Alamofire', '~> 4.7'
+    pod 'ReachabilitySwift'
 end	

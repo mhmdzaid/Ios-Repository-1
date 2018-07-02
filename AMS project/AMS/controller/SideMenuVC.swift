@@ -71,6 +71,7 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
             break
         case 3:
            if loginType != 0{
+            
             self.revealViewController().revealToggle(self)
             let TabBarVC = self.revealViewController().frontViewController as! UITabBarController
             let SCHEDuleVC = TabBarVC.viewControllers![1] as! scheduleVC
