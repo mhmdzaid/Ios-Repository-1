@@ -261,8 +261,10 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.fetchQuestions()
-         self.layoutConfig()
+        self.fetchQuestions()
+        self.layoutConfig()
+        
+        
         self.view.backgroundColor = UIColor.black
       
 
@@ -279,10 +281,40 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     
     func layoutConfig()->(){
         let url = "http://syntax-eg.esy.es/api/schedule"
-        fetchingSchedule(url:url) {        // rendering tableView data after completion of the request
+        DispatchQueue.global(qos: .userInteractive).async {
+         self.fetchingSchedule(url:url) {        // rendering tableView data after completion of the request
             self.tableView.delegate = self
             self.tableView.dataSource = self
             self.tableView.reloadData()
+          
+                    let date = Date()
+                    print("here is the date \(date)")
+                    //let weekday = Calendar.current.component(.weekday, from: date)
+                    let f = DateFormatter()
+                    let nameOfTheDay = "MOnday"//f.weekdaySymbols[Calendar.current.component(.weekday, from: Date())-1]
+                    let calendar = Calendar.current
+                    let hour = calendar.component(.hour, from: date)
+                    let minutes = calendar.component(.minute, from: date)
+                    print("\(hour):\(minutes)")
+
+                        DispatchQueue.main.async {
+                             for section in 0..<6{
+                            print("\(String(nameOfTheDay).lowercased())=========\(self.days[section].lowercased())")
+                            if  String(nameOfTheDay).lowercased() == self.days[section].lowercased(){
+                                print("number of rows in section \(self.tableView.numberOfRows(inSection: section))")
+                                let numberOfRows = self.tableView.numberOfRows(inSection: section)
+                                for row in 0..<numberOfRows{
+                                    print(row)
+                                   let indexPath = IndexPath(row: row, section: section)
+                                    if let cell = self.tableView.cellForRow(at: indexPath) as? scheduleCellTableViewCell{
+                                        print("here is the subject name \(cell.subjectLbl.text!)")
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+            }
             
         }
         profImageInfo.layer.cornerRadius = 25
@@ -418,7 +450,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // for expanding and collapsing
-        
+        if subject[days[section]]!.count == 0 {
+            return 0
+        }
         
         if !subject[days[section]]![0].isExpanded{
             return 0
@@ -514,6 +548,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         button.layer.borderColor = UIColor.black.cgColor
         print("check ------------- \(days[section])")
         
+        if subject[days[section]]!.count == 0{
+          return button
+        }
 
         if subject[days[section]]![0].isExpanded{
             button.setImage(minus, for: .normal)
@@ -551,7 +588,9 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
             indexPaths.append(indexpath)
         }
         var isExpanded  : Bool!
-        
+        if subject[days[section]]!.count == 0 {
+            return
+        }
         isExpanded = subject[days[section]]![0].isExpanded
         
         
@@ -563,7 +602,6 @@ class scheduleVC: UIViewController ,UITableViewDelegate, UITableViewDataSource{
         }else{
             
             tableView.insertRows(at: indexPaths, with: UITableViewRowAnimation.top)
-            self.tableView.scrollToRow(at: indexPaths[indexPaths.count-1], at: UITableViewScrollPosition.bottom, animated: true)
              button.setImage(minus, for: .normal)
         
         }
