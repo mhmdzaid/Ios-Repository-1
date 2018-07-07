@@ -18,7 +18,8 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
     func resumeButtonPressed(cellResume: UIView) {
         cellResume.isHidden = true
     }
-   
+    public static var hiddenViews : [Bool]! = []
+    public static var activations : [Bool]! = []
     var levels : [String]! = []
     var students_ids : [Int]! = []
     var students : [String]! = []{
@@ -82,6 +83,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "studentCell") as? StudentCell else{
             return UITableViewCell()
         }
+     cell.vieww.isHidden = ManualAttendanceVC.hiddenViews[indexPath.row]
      cell.delegate = self
      cell.layer.borderWidth = 0.6
      cell.layer.borderColor = UIColor.black.cgColor
@@ -91,7 +93,7 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
      cell.studentImage.clipsToBounds = true
      cell.layer.borderColor = #colorLiteral(red: 0, green: 0.4784313725, blue: 1, alpha: 1)
      cell.id = students_ids[indexPath.row]
-     
+     cell.studentSwitch.isOn = ManualAttendanceVC.activations[indexPath.row]
        
     return cell
     }
@@ -134,6 +136,8 @@ class ManualAttendanceVC: UIViewController ,UITableViewDelegate,UITableViewDataS
                     self.levels.append(student["level"].stringValue)
                     self.students.append(student["name"].stringValue)
                     self.students_ids.append(student["id"].intValue)
+                    ManualAttendanceVC.activations.append(false)
+                    ManualAttendanceVC.hiddenViews.append(true)
                 }
               }
                 

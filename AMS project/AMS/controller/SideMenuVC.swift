@@ -64,10 +64,22 @@ class SideMenuVC: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0 :
+            self.revealViewController().revealToggle(self)
+            let TabBarVC = self.revealViewController().frontViewController as! UITabBarController
+            let HomeVC = TabBarVC.viewControllers![0] as! HomeVC
+            TabBarVC.selectedViewController = HomeVC
             break
         case 1:
+            self.revealViewController().revealToggle(self)
+            let TabBarVC = self.revealViewController().frontViewController as! UITabBarController
+            let NotificationVC = TabBarVC.viewControllers![2] as! NotificationVC
+            TabBarVC.selectedViewController = NotificationVC
             break
         case 2:
+            self.revealViewController().revealToggle(self)
+            let TabBarVC = self.revealViewController().frontViewController as! UITabBarController
+            let SCHEDuleVC = TabBarVC.viewControllers![1] as! scheduleVC
+            TabBarVC.selectedViewController = SCHEDuleVC
             break
         case 3:
            if loginType != 0{
